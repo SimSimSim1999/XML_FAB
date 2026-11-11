@@ -21,10 +21,12 @@ public sealed class ExplanatoryNoteModel
 
     public XElement ToXml()
     {
+        XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
+        
         var root = new XElement("ExplanatoryNote",
             new XAttribute("SchemaVersion", SchemaVersion),
-            new XAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"),
-            new XAttribute("xsi:noNamespaceSchemaLocation", "explanatorynote-01-07.xsd"));
+            new XAttribute(XNamespace.Xmlns + "xsi", xsi.NamespaceName),
+            new XAttribute(xsi + "noNamespaceSchemaLocation", "explanatorynote-01-07.xsd"));
 
         if (!string.IsNullOrWhiteSpace(AccessRestriction))
             root.Add(new XAttribute("AccessRestriction", AccessRestriction));
