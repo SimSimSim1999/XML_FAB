@@ -8,6 +8,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
+                <MenuItem Header="Создать черновик…" Click="NewDocument_Click" />
                 <MenuItem Header="Открыть XML для проверки…" Click="OpenXml_Click" />
                 <MenuItem Header="Выбрать XSD…" Click="OpenSchema_Click" />
                 <Separator />
