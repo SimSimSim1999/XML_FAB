@@ -1,0 +1,77 @@
+<Window x:Class="XML_FAB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="XML FAB — пояснительная записка"
+        Width="1180" Height="760" MinWidth="900" MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFFFFF">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть XML для проверки…" Click="OpenXml_Click" />
+                <MenuItem Header="Выбрать XSD…" Click="OpenSchema_Click" />
+                <Separator />
+                <MenuItem Header="Выход" Click="Exit_Click" />
+            </MenuItem>
+            <MenuItem Header="Справка">
+                <MenuItem Header="О программе" Click="About_Click" />
+            </MenuItem>
+        </Menu>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="{StaticResource SidebarBrush}" Padding="18">
+                <StackPanel>
+                    <TextBlock Text="XML FAB" FontSize="22" FontWeight="Bold" Margin="0,0,0,20" />
+                    <TextBlock Text="РАБОЧИЙ ПРОЦЕСС" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <Button Content="Создание документа" IsEnabled="False" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
+                    <Button Content="Заполнение формы" IsEnabled="False" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
+                    <Button Content="Проверка XML" IsEnabled="False" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" Background="#DBEAFE" />
+                    <Button Content="Экспорт PDF" IsEnabled="False" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,18" />
+                    <TextBlock Text="ИНСТРУМЕНТЫ" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <Button Content="Работа с XSD" Click="OpenSchema_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
+                    <TextBlock Text="Каркас приложения. Редактор формы и экспорт будут добавляться следующими этапами." TextWrapping="Wrap" Foreground="#475569" Margin="4,18,4,0" />
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Column="1" Margin="28">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Проверка XML по XSD" FontSize="26" FontWeight="SemiBold" />
+                <TextBlock Grid.Row="1" Text="Выберите XML-документ. По умолчанию используется схема explanatorynote-01-07.xsd, поставляемая вместе с приложением." TextWrapping="Wrap" Foreground="#475569" Margin="0,8,0,20" />
+
+                <Border Grid.Row="2" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,16">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="XSD:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,12,0" />
+                        <TextBlock x:Name="SchemaPathText" Grid.Column="1" Text="Встроенная схема не найдена" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                        <Button Grid.Column="2" Content="Выбрать XSD…" Click="OpenSchema_Click" Padding="12,6" Margin="12,0,0,0" />
+                    </Grid>
+                </Border>
+
+                <GroupBox Grid.Row="3" Header="Результат проверки" Padding="10">
+                    <ListBox x:Name="MessagesList" BorderThickness="0" />
+                </GroupBox>
+
+                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+                    <Button Content="Открыть XML…" Click="OpenXml_Click" Padding="16,9" Margin="0,0,10,0" />
+                    <Button Content="Проверить XML" Click="Validate_Click" Padding="16,9" Background="{StaticResource AccentBrush}" Foreground="White" BorderThickness="0" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
