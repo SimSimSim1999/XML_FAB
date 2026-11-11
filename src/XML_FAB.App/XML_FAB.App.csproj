@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>XML_FAB</AssemblyName>
+    <RootNamespace>XML_FAB</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\explanatorynote-01-07.xsd" Link="Schemas\explanatorynote-01-07.xsd" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\explanatorynote-01-07.xsl" Link="Stylesheets\explanatorynote-01-07.xsl" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
