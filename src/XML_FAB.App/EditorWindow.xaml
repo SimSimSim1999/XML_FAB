@@ -1,7 +1,7 @@
 <Window x:Class="XML_FAB.EditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Новый документ — XML FAB"
+        Title="Создать проект — XML FAB"
         Width="850" Height="650" MinWidth="700" MinHeight="500"
         WindowStartupLocation="CenterOwner">
     <DockPanel Margin="18">
@@ -17,78 +17,49 @@
         <TabControl>
             <TabItem Header="1. Основные сведения">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="18" MaxWidth="600"
-                                HorizontalAlignment="Left">
-                        <TextBlock Text="Пояснительная записка"
-                                   FontSize="23" FontWeight="SemiBold"
-                                   Margin="0,0,0,18" />
-
+                    <StackPanel Margin="18" MaxWidth="600" HorizontalAlignment="Left">
+                        <TextBlock Text="Пояснительная записка" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
                         <TextBlock Text="Шифр пояснительной записки *" />
-                        <TextBox Text="{Binding ExplanatoryNoteNumber, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
-
+                        <TextBox Text="{Binding ExplanatoryNoteNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="Год составления *" />
-                        <TextBox Text="{Binding ExplanatoryNoteYear, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
-
+                        <TextBox Text="{Binding ExplanatoryNoteYear, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="Гриф ограничения доступа" />
-                        <TextBox Text="{Binding AccessRestriction, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
+                        <TextBox Text="{Binding AccessRestriction, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
 
             <TabItem Header="2. Автор">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="18" MaxWidth="600"
-                                HorizontalAlignment="Left">
-                        <TextBlock Text="Организация — автор пояснительной записки"
-                                   FontSize="23" FontWeight="SemiBold"
-                                   Margin="0,0,0,18" />
-
+                    <StackPanel Margin="18" MaxWidth="600" HorizontalAlignment="Left">
+                        <TextBlock Text="Организация — автор пояснительной записки" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
                         <TextBlock Text="Полное наименование" />
-                        <TextBox Text="{Binding AuthorFullName, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
-
+                        <TextBox Text="{Binding AuthorFullName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="Сокращённое наименование" />
-                        <TextBox Text="{Binding AuthorShortName, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
-
+                        <TextBox Text="{Binding AuthorShortName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="ОГРН" />
-                        <TextBox Text="{Binding AuthorOgrn, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
-
+                        <TextBox Text="{Binding AuthorOgrn, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="ИНН" />
-                        <TextBox Text="{Binding AuthorInn, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
+                        <TextBox Text="{Binding AuthorInn, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
 
             <TabItem Header="3. Объект">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="18" MaxWidth="600"
-                                HorizontalAlignment="Left">
-                        <TextBlock Text="Объект капитального строительства"
-                                   FontSize="23" FontWeight="SemiBold"
-                                   Margin="0,0,0,18" />
-
+                    <StackPanel Margin="18" MaxWidth="600" HorizontalAlignment="Left">
+                        <TextBlock Text="Объект капитального строительства" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
                         <TextBlock Text="Тип объекта *" />
-                        <ComboBox SelectedValuePath="Tag"
-                                  SelectedValue="{Binding ObjectType, UpdateSourceTrigger=PropertyChanged}"
-                                  Margin="0,4,0,14">
+                        <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding ObjectType, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14">
                             <ComboBoxItem Content="Непроизводственный" Tag="NonIndustrialObject" />
                             <ComboBoxItem Content="Производственный" Tag="IndustrialObject" />
                             <ComboBoxItem Content="Линейный" Tag="LinearObject" />
                         </ComboBox>
-
                         <TextBlock Text="Наименование объекта *" />
-                        <TextBox Text="{Binding ObjectName, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
-
+                        <TextBox Text="{Binding ObjectName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="Идентификатор объекта (ObjectID) *" />
-                        <TextBox Text="{Binding ObjectId, UpdateSourceTrigger=PropertyChanged}"
-                                 Margin="0,4,0,14" />
+                        <TextBox Text="{Binding ObjectId, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Форма содержит начальный набор полей. Перед формированием XML её необходимо дополнить полями, требуемыми выбранной XSD." Foreground="#64748B" TextWrapping="Wrap" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
