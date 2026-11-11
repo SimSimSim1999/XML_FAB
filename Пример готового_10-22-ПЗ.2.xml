@@ -1,0 +1,744 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="explanatorynote-01-07.xsl"?>
+<ExplanatoryNote xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="01.07" id="BC3D2550-9FC4-4B77-9447-9E1177176628" xsi:noNamespaceSchemaLocation="explanatorynote-01-07.xsd">
+  <ExplanatoryNoteNumber>10-22-ПЗ.2</ExplanatoryNoteNumber>
+  <ExplanatoryNoteYear>2026</ExplanatoryNoteYear>
+  <ExplanatoryNoteModifications>
+    <Modification>
+      <ModificationNumber>1</ModificationNumber>
+      <ModificationDate>2026-09-22</ModificationDate>
+      <ModificationNote>Корректировка №1 на основании задания на корректировку №1 от 20.07.2026. Ранее выдано положительное заключение №02-2-1-3-022079-2023 от 27.04.2023 ООО «Проектное бюро №1». Корректируются ПЗ.1, ПЗ.2, ПЗУ, АР, КР.1, КР.2, КР.3. Изыскания не корректируются и не включаются в комплект.</ModificationNote>
+    </Modification>
+  </ExplanatoryNoteModifications>
+  <IssueAuthor>
+    <Organization NOPRIZNumber="П-171-009725085022-0614">
+      <FullName>Общество с ограниченной ответственностью «Проектная компания «БАДР»</FullName>
+      <AbbreviatedName>ООО «ПК «БАДР»</AbbreviatedName>
+      <OGRN>1227700313543</OGRN>
+      <INN>9725085022</INN>
+      <KPP>772501001</KPP>
+      <Address>
+        <RussianAddress>
+          <RegionCode>77</RegionCode>
+          <OKTMOCode>45914000000</OKTMOCode>
+          <OKTMOName>вн. тер. г. муниципальный округ Даниловский</OKTMOName>
+          <City>Москва</City>
+          <Street>3-й Автозаводский проезд</Street>
+          <Building>3</Building>
+          <Room>этаж/помещ./офис 3/310/6Г</Room>
+        </RussianAddress>
+      </Address>
+    </Organization>
+  </IssueAuthor>
+  <Signers>
+    <ChiefProjectEngineer role="Разработка">
+      <Surname>Чамурлиев</Surname>
+      <Name>Василий</Name>
+      <Patronymic>Георгадисович</Patronymic>
+      <SNILS>115-194-688 60</SNILS>
+      <NOPRIZNumber>П-151729</NOPRIZNumber>
+    </ChiefProjectEngineer>
+  </Signers>
+  <Developer>
+    <Organization>
+      <FullName>Общество с ограниченной ответственностью Специализированный застройщик «СК ПЕРСПЕКТИВА»</FullName>
+      <AbbreviatedName>ООО СЗ «СК ПЕРСПЕКТИВА»</AbbreviatedName>
+      <OGRN>1200200043262</OGRN>
+      <INN>0274958807</INN>
+      <KPP>027401001</KPP>
+      <Address>
+        <RussianAddress>
+          <RegionCode>02</RegionCode>
+          <OKTMOCode>80701000001</OKTMOCode>
+          <OKTMOName>г.о. город Уфа</OKTMOName>
+          <City>Уфа</City>
+          <Street>Заки Валиди</Street>
+          <Building>42</Building>
+        </RussianAddress>
+      </Address>
+    </Organization>
+  </Developer>
+  <UsedNorms>
+    <UsedNorm>Специальные технические условия на проектирование и строительство, в части обеспечения пожарной безопасности объекта капитального строительства: «Многоквартирный жилой дом с помещениями общественного назначения и паркингом на территории, ограниченной улицами Авроры, Батырской в Кировском районе города Уфы Республики Башкортостан (Жилой дом 2)»</UsedNorm>
+  </UsedNorms>
+  <ProjectDecisionDocuments>
+    <Document>
+      <DocType>05.03</DocType>
+      <DocName>Задание на корректировку проектной документации №1</DocName>
+      <DocNumber>1</DocNumber>
+      <DocDate>2026-07-20</DocDate>
+      <DocIssueAuthor>ООО СЗ «СК ПЕРСПЕКТИВА»</DocIssueAuthor>
+      <File>
+        <FileName>ТЗ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>6093A2DA</FileChecksum>
+      </File>
+    </Document>
+  </ProjectDecisionDocuments>
+  <ProjectInitialDocuments>
+    <Document>
+      <DocType>05.03</DocType>
+      <DocName>Задание на корректировку проектной документации №1</DocName>
+      <DocNumber>1</DocNumber>
+      <DocDate>2026-07-20</DocDate>
+      <DocIssueAuthor>ООО СЗ «СК ПЕРСПЕКТИВА»</DocIssueAuthor>
+      <File>
+        <FileName>ТЗ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>6093A2DA</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>03.02</DocType>
+      <DocName>Градостроительный план земельного участка</DocName>
+      <DocNumber>РФ-02-2-55-0-00-2023-0324-0</DocNumber>
+      <DocDate>2023-04-19</DocDate>
+      <DocIssueAuthor>Главное управление архитектуры и градостроительства Администрации ГО г. Уфа РБ</DocIssueAuthor>
+      <Included>Приложение к 10-22-ПЗ.2.pdf; исходный подписанный том</Included>
+    </Document>
+    <Document>
+      <DocType>03.03</DocType>
+      <DocName>Постановление об утверждении проекта планировки и проекта межевания территории</DocName>
+      <DocNumber>1339</DocNumber>
+      <DocDate>2021-10-07</DocDate>
+      <DocIssueAuthor>Администрация ГО г. Уфа РБ</DocIssueAuthor>
+      <Included>Приложение к 10-22-ПЗ.2.pdf; исходный подписанный том</Included>
+    </Document>
+    <Document>
+      <DocType>02.01</DocType>
+      <DocName>Положительное заключение негосударственной экспертизы</DocName>
+      <DocNumber>02-2-1-3-022079-2023</DocNumber>
+      <DocDate>2023-04-27</DocDate>
+      <DocIssueAuthor>ООО «Проектное бюро №1»</DocIssueAuthor>
+      <Included>Приложение к 10-22-ПЗ.2.pdf; исходный подписанный том</Included>
+    </Document>
+    <Document>
+      <DocType>99.99</DocType>
+      <DocName>Выписка ЕГРН об основных характеристиках и зарегистрированных правах на земельный участок 02:55:010836:567</DocName>
+      <DocNumber>б/н</DocNumber>
+      <DocDate>2023-04-19</DocDate>
+      <DocIssueAuthor>Управление Росреестра по Республике Башкортостан</DocIssueAuthor>
+      <File>
+        <FileName>24. ЕГРН 567 (2 дом).pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>D59FA3EB</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>99.99</DocType>
+      <DocName>Исходно-разрешительная документация и приложения к пояснительной записке</DocName>
+      <DocNumber>10-22-ПЗ.2</DocNumber>
+      <DocDate>2026-09-22</DocDate>
+      <DocIssueAuthor>ООО «ПК «БАДР»</DocIssueAuthor>
+      <File>
+        <FileName>10-22-ПЗ.2.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>58E286AE</FileChecksum>
+        <SignFile>
+          <FileName>10-22-ПЗ.2.pdf.sig</FileName>
+          <FileFormat>sig</FileFormat>
+          <RelativePath>ЭЦП</RelativePath>
+          <FileChecksum>95167471</FileChecksum>
+        </SignFile>
+      </File>
+    </Document>
+  </ProjectInitialDocuments>
+  <AdditionalData>
+    <Data>
+      <DataDescription>Состав проекта. Корректировка №1</DataDescription>
+      <File>
+        <FileName>10-22-ПЗ.1.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>49E10159</FileChecksum>
+        <SignFile>
+          <FileName>10-22-ПЗ.1.pdf.sig</FileName>
+          <FileFormat>sig</FileFormat>
+          <RelativePath>ЭЦП</RelativePath>
+          <FileChecksum>8B37EC6D</FileChecksum>
+        </SignFile>
+      </File>
+    </Data>
+    <Data>
+      <DataDescription>Исходный подписанный том ПЗ.2 с приложениями и описанием корректировки</DataDescription>
+      <File>
+        <FileName>10-22-ПЗ.2.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>58E286AE</FileChecksum>
+        <SignFile>
+          <FileName>10-22-ПЗ.2.pdf.sig</FileName>
+          <FileFormat>sig</FileFormat>
+          <RelativePath>ЭЦП</RelativePath>
+          <FileChecksum>95167471</FileChecksum>
+        </SignFile>
+      </File>
+    </Data>
+  </AdditionalData>
+  <FinanceSources>
+    <PrivateSource/>
+    <FinanceComment>Без привлечения средств, указанных в части 2 статьи 8.3 Градостроительного кодекса Российской Федерации; по заключению экспертизы.</FinanceComment>
+  </FinanceSources>
+  <NonIndustrialObject ObjectID="object_10_22_house2" Placement="1" DangerousAndComplex="0" Unique="0">
+    <Name>Многоквартирный жилой дом с помещениями общественного назначения и паркингом на территории, ограниченной улицами Авроры, Батырской в Кировском районе города Уфы Республики Башкортостан (жилой дом №2)</Name>
+    <ConstructionType>1</ConstructionType>
+    <Address>
+      <RussianAddress>
+        <RegionCode>02</RegionCode>
+        <OKTMOCode>80701000001</OKTMOCode>
+        <OKTMOName>г. Уфа</OKTMOName>
+        <District>Кировский район</District>
+        <City>Уфа</City>
+        <Street>Авроры, Батырская</Street>
+      </RussianAddress>
+    </Address>
+    <Functions>
+      <FunctionsNote>Многоквартирный жилой дом с помещениями общественного назначения и паркингом</FunctionsNote>
+      <FunctionsClass>01.02.001.006</FunctionsClass>
+    </Functions>
+    <FunctionsFeatures>
+      <Text>Застройка представляет собой группу из семи жилых секций переменной этажности (от 10 до 29 этажей), объединенных общим одноэтажным надземным стилобатом. Секции располагаются с понижением этажности в сторону ул. Батырской, расположенной с южной стороны жилого комплекса. Высота жилых этажей - 3150 мм, часть этажей увеличенной высоты - от 3300 мм до 3600 мм. Расположение секций позволяет обеспечить оптимальную инсоляцию.</Text>
+      <Text>В стилобатной части размещены центральные входные группы жилых секций, технические помещения инженерной инфраструктуры и закрытый одноуровневый надземный паркинг на 334 машиноместа. В паркинге предусмотрены 160 двухуровневых механизированных парковочных систем стеллажного типа. По периметру стилобата, со стороны основных улиц, размещаются помещения общественного назначения (офисы), имеющие самостоятельные входы-выходы наружу.</Text>
+      <Text>На эксплуатируемой кровле стилобата размещается благоустройство: площадки для отдыха взрослых, игр детей дошкольного и школьного возрастов, спортивные площадки и озеленение. Площадки жилых дворов запроектированы с соблюдением санитарных разрывов (10 - 12 м) до окон жилых секций. Стилобат имеет ограждения для обеспечения безопасности населения. Вход на стилобатную часть осуществляется непосредственно из подъездов жилых секций. Такой градостроительный приём разделения общественной и приватной, частной зон отвечает современным тенденциям формирования устойчивой и комфортной городской среды.</Text>
+      <Text>Часть квартир, расположенных на втором и последних этажах здания имеют индивидуальные террасы с выходом на них из квартир.</Text>
+      <Text>Благодаря оптимальному расположению секций, их террасированности, а также расположению лесного массива непосредственно рядом с жилым комплексом, большая часть квартир являются видовыми, из окон раскрываются панорамы на окружающую природу, реку Уфа.</Text>
+      <Text>Жилые квартиры не примыкают к помещению для хранения автомобилей, от технических помещений отделены техническим пространством.</Text>
+      <Text>На территории земельного участка расположены открытые парковочные места, благоустройство и озеленение территории. Проезд для пожарной техники предусмотрен ко всем сторонам здания (стилобата), включая один проезд к одной продольной стороне каждого жилого корпуса.</Text>
+    </FunctionsFeatures>
+    <PowerIndicator>
+      <Name>Количество квартир</Name>
+      <Measure>796</Measure>
+      <Value>735</Value>
+    </PowerIndicator>
+    <TEI>
+      <Name>Площадь застройки жилого дома</Name>
+      <Measure>055</Measure>
+      <Value>8310</Value>
+    </TEI>
+    <TEI>
+      <Name>Общая площадь здания</Name>
+      <Measure>055</Measure>
+      <Value>60222,89</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество секций</Name>
+      <Measure>796</Measure>
+      <Value>7</Value>
+    </TEI>
+    <TEI>
+      <Name>Общая площадь квартир с учетом летних помещений</Name>
+      <Measure>055</Measure>
+      <Value>39688,97</Value>
+    </TEI>
+    <TEI>
+      <Name>Площадь квартир без учета летних помещений</Name>
+      <Measure>055</Measure>
+      <Value>39061,87</Value>
+    </TEI>
+    <TEI>
+      <Name>Общая площадь нежилых помещений общественного назначения</Name>
+      <Measure>055</Measure>
+      <Value>967,00</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество машиномест с учетом механизированных</Name>
+      <Measure>796</Measure>
+      <Value>334</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество машиномест в одном уровне</Name>
+      <Measure>796</Measure>
+      <Value>174</Value>
+    </TEI>
+    <TEI>
+      <Name>Площадь машиномест при хранении в одном уровне</Name>
+      <Measure>055</Measure>
+      <Value>2680,93</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество кладовых</Name>
+      <Measure>796</Measure>
+      <Value>13</Value>
+    </TEI>
+    <TEI>
+      <Name>Общая площадь кладовых</Name>
+      <Measure>055</Measure>
+      <Value>48,49</Value>
+    </TEI>
+    <TEI>
+      <Name>Строительный объем надземной части</Name>
+      <Measure>113</Measure>
+      <Value>245044,26</Value>
+    </TEI>
+    <TEI>
+      <Name>Строительный объем подземной части</Name>
+      <Measure>113</Measure>
+      <Value>0</Value>
+    </TEI>
+    <TEI>
+      <Name>Площадь земельного участка по ГПЗУ</Name>
+      <Measure>055</Measure>
+      <Value>14753</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество трансформаторных подстанций</Name>
+      <Measure>796</Measure>
+      <Value>1</Value>
+    </TEI>
+    <TEI>
+      <Name>Площадь трансформаторной подстанции</Name>
+      <Measure>055</Measure>
+      <Value>49</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей секции С-1</Name>
+      <Measure>796</Measure>
+      <Value>29</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей секции С-2</Name>
+      <Measure>796</Measure>
+      <Value>29</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей секции С-3</Name>
+      <Measure>796</Measure>
+      <Value>10</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей секции С-4</Name>
+      <Measure>796</Measure>
+      <Value>12</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей секции С-5</Name>
+      <Measure>796</Measure>
+      <Value>14</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей секции С-6</Name>
+      <Measure>796</Measure>
+      <Value>16</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей секции С-7</Name>
+      <Measure>796</Measure>
+      <Value>18</Value>
+    </TEI>
+    <EnergyEfficiency>
+      <EnergyEfficiencyClass>C</EnergyEfficiencyClass>
+      <EnergyEfficiencyImproving>
+        <Text>Расчетный удельный годовой расход энергетических ресурсов составляет 203,75 кВт·ч/м² в год (71,17 + 113,36 + 19,22). По расчету при вводе здания в эксплуатацию может быть установлен класс «C» (повышенный). Класс приведен как ожидаемый; присвоение класса осуществляется органом государственного строительного надзора при вводе здания в эксплуатацию.</Text>
+      </EnergyEfficiencyImproving>
+    </EnergyEfficiency>
+    <FireDangerCategory>Категория не устанавливается</FireDangerCategory>
+    <PeoplePermanentStay>
+      <Text>Имеет помещения с постоянным пребыванием людей.</Text>
+    </PeoplePermanentStay>
+    <ResponsibilityLevel>нормальный</ResponsibilityLevel>
+    <ClimateConditions>
+      <ClimateNote>
+        <Text>Климатический район и подрайон — IВ; ветровой район — II; снеговой район — V; инженерно-геологические условия — III категория сложности. Сейсмичность — 5 баллов. По заключению экспертизы.</Text>
+      </ClimateNote>
+      <DangerousNatureProcesses>
+        <Text>Площадка строительства относится к участку II-Б-1 «Потенциально подтопляемые в результате ожидаемых техногенных воздействий» по степени подтопляемости, к V (относительно устойчивой) категории устойчивости относительно карстовых провалов. По исходной ПЗ.</Text>
+      </DangerousNatureProcesses>
+      <ClimateDistrict>IВ</ClimateDistrict>
+      <GeologicalConditions>III</GeologicalConditions>
+      <WindDistrict>II</WindDistrict>
+      <SnowDistrict>V</SnowDistrict>
+      <SeismicActivity>5</SeismicActivity>
+    </ClimateConditions>
+    <Resources>
+      <Note>
+        <Text>Расход воды:</Text>
+        <Text>Общий расход холодной воды с учетом горячего водоснабжения составляет 179,724 м³/сут, 17,564 м³/час, 6,638 л/с.</Text>
+        <Text>Расчетный годовой расход электроэнергии:</Text>
+        <Text>Расчетный годовой расход электроэнергии многоквартирного жилого дома 13 668 228 кВт*час.</Text>
+        <Text>Расчетный годовой расход электроэнергии для наружного освещения 27 156 кВт*час.</Text>
+        <Text>Расход тепла: в первой строке каждой позиции — кВт, во второй — Гкал/ч.</Text>
+        <Table>
+          <TitleRow>
+            <Cell>Наименование здания</Cell>
+            <Cell>Период года, °C</Cell>
+            <Cell>Отопление</Cell>
+            <Cell>Вентиляция</Cell>
+            <Cell>ВТЗ</Cell>
+            <Cell>ГВС макс.</Cell>
+            <Cell>Общий расход тепла</Cell>
+          </TitleRow>
+          <Row>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>отопление</Cell>
+            <Cell>вентиляция</Cell>
+            <Cell>ВТЗ</Cell>
+            <Cell>ГВСмах</Cell>
+            <Cell>общий</Cell>
+          </Row>
+          <Row>
+            <Cell>Жилая часть</Cell>
+            <Cell></Cell>
+            <Cell>2632,28</Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>2632,28</Cell>
+          </Row>
+          <Row>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>2,263</Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>2,263</Cell>
+          </Row>
+          <Row>
+            <Cell>Встроенно-пристроенные помещения общественного назначения</Cell>
+            <Cell></Cell>
+            <Cell>63,35</Cell>
+            <Cell>188,21</Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>251,56</Cell>
+          </Row>
+          <Row>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>0,054</Cell>
+            <Cell>0,162</Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>0,216</Cell>
+          </Row>
+          <Row>
+            <Cell>Паркинг с вспомогательными помещениями</Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>736,49</Cell>
+            <Cell>170,00</Cell>
+            <Cell></Cell>
+            <Cell>736,49</Cell>
+          </Row>
+          <Row>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>0,633</Cell>
+            <Cell>0,146</Cell>
+            <Cell></Cell>
+            <Cell>0,633</Cell>
+          </Row>
+          <Row>
+            <Cell>Итого</Cell>
+            <Cell>-33</Cell>
+            <Cell>2695,63</Cell>
+            <Cell>924,70</Cell>
+            <Cell>170,00</Cell>
+            <Cell>853,64</Cell>
+            <Cell>4643,97</Cell>
+          </Row>
+          <Row>
+            <Cell></Cell>
+            <Cell></Cell>
+            <Cell>2,318</Cell>
+            <Cell>0,795</Cell>
+            <Cell>0,146</Cell>
+            <Cell>0,734</Cell>
+            <Cell>3,993</Cell>
+          </Row>
+        </Table>
+        <Text>Тепловые нагрузки уточняются на стадии рабочего проектирования.</Text>
+      </Note>
+    </Resources>
+    <RenewableSourceInfo>
+      <Text>Не требуется</Text>
+    </RenewableSourceInfo>
+    <LandCategory>2</LandCategory>
+    <LandInfo>
+      <CommonLandInfo>
+        <Text>Не требуется</Text>
+      </CommonLandInfo>
+      <LandAreaInfo>
+        <CadastralNumber>02:55:010836:567</CadastralNumber>
+        <LandCategory>2</LandCategory>
+        <UsingNote>Земли населенных пунктов. Разрешенное использование: многоэтажная жилая застройка (высотная застройка). Площадь 14 753 ±43 м². По выписке ЕГРН от 19.04.2023. Территориальная зона ОЖ по ГПЗУ.</UsingNote>
+      </LandAreaInfo>
+    </LandInfo>
+    <LandFunds>
+      <Text>Не требуется</Text>
+    </LandFunds>
+    <PatentsUsed>
+      <Text>Не требуется</Text>
+    </PatentsUsed>
+    <SpecialRequirements>
+      <Text>Специальные технические условия на проектирование и строительство, в части обеспечения пожарной безопасности объекта капитального строительства: «Многоквартирный жилой дом с помещениями общественного назначения и паркингом на территории, ограниченной улицами Авроры, Батырской в Кировском районе города Уфы Республики Башкортостан (Жилой дом 2)</Text>
+    </SpecialRequirements>
+    <StaffNote>
+      <Text>Не требуется</Text>
+    </StaffNote>
+    <SoftwareUsed>
+      <SoftwareNote>
+        <Text>При выполнении расчетов использовалась программа «ЛИРА-САПР 2021» ID ключа 877684469.</Text>
+      </SoftwareNote>
+    </SoftwareUsed>
+    <StagesInfo>
+      <ReasonNote>
+        <Text>Без деления на этапы.</Text>
+      </ReasonNote>
+    </StagesInfo>
+    <DestroyFunds>
+      <Text>Не требуется</Text>
+    </DestroyFunds>
+    <LandReclamationLink>
+      <Text>Не требуется</Text>
+    </LandReclamationLink>
+    <ProjectDocumentation>
+      <Section2>
+        <SectionContent>
+          <Document>
+            <DocName>Схема планировочной организации земельного участка</DocName>
+            <DocNumber>10-22-ПЗУ</DocNumber>
+            <DocChanges>Корректировка №1</DocChanges>
+            <ProjectDocParticipants>
+              <DocParticipant role="Согласование">
+                <Surname>Чамурлиев</Surname>
+                <Name>Василий</Name>
+                <Patronymic>Георгадисович</Patronymic>
+                <SNILS>115-194-688 60</SNILS>
+                <NOPRIZNumber>П-151729</NOPRIZNumber>
+              </DocParticipant>
+            </ProjectDocParticipants>
+            <File>
+              <FileName>10-22-ПЗУ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>B54CF82C</FileChecksum>
+              <SignFile>
+                <FileName>10-22-ПЗУ.pdf.sig</FileName>
+                <FileFormat>sig</FileFormat>
+                <RelativePath>ЭЦП</RelativePath>
+                <FileChecksum>A4E7F376</FileChecksum>
+              </SignFile>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section2>
+      <Section3>
+        <SectionContent>
+          <Document>
+            <DocName>Объемно-планировочные и архитектурные решения</DocName>
+            <DocNumber>10-22-АР</DocNumber>
+            <DocChanges>Корректировка №1</DocChanges>
+            <ProjectDocParticipants>
+              <DocParticipant role="Согласование">
+                <Surname>Чамурлиев</Surname>
+                <Name>Василий</Name>
+                <Patronymic>Георгадисович</Patronymic>
+                <SNILS>115-194-688 60</SNILS>
+                <NOPRIZNumber>П-151729</NOPRIZNumber>
+              </DocParticipant>
+            </ProjectDocParticipants>
+            <File>
+              <FileName>10-22-АР.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>158B732A</FileChecksum>
+              <SignFile>
+                <FileName>10-22-АР.pdf.sig</FileName>
+                <FileFormat>sig</FileFormat>
+                <RelativePath>ЭЦП</RelativePath>
+                <FileChecksum>B4CB4FA6</FileChecksum>
+              </SignFile>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section3>
+      <Section4>
+        <SectionContent>
+          <Document>
+            <DocName>Часть 1. Пояснительная записка</DocName>
+            <DocNumber>10-22-КР.1</DocNumber>
+            <DocChanges>Корректировка №1</DocChanges>
+            <ProjectDocParticipants>
+              <DocParticipant role="Согласование">
+                <Surname>Чамурлиев</Surname>
+                <Name>Василий</Name>
+                <Patronymic>Георгадисович</Patronymic>
+                <SNILS>115-194-688 60</SNILS>
+                <NOPRIZNumber>П-151729</NOPRIZNumber>
+              </DocParticipant>
+            </ProjectDocParticipants>
+            <File>
+              <FileName>10-22-КР.1.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>9C8020D0</FileChecksum>
+              <SignFile>
+                <FileName>10-22-КР.1.pdf.sig</FileName>
+                <FileFormat>sig</FileFormat>
+                <RelativePath>ЭЦП</RelativePath>
+                <FileChecksum>FACA5E9E</FileChecksum>
+              </SignFile>
+            </File>
+          </Document>
+          <Document>
+            <DocName>Часть 2. Несущие конструкции секции С-1, С-2</DocName>
+            <DocNumber>10-22-КР.2</DocNumber>
+            <DocChanges>Корректировка №1</DocChanges>
+            <ProjectDocParticipants>
+              <DocParticipant role="Согласование">
+                <Surname>Чамурлиев</Surname>
+                <Name>Василий</Name>
+                <Patronymic>Георгадисович</Patronymic>
+                <SNILS>115-194-688 60</SNILS>
+                <NOPRIZNumber>П-151729</NOPRIZNumber>
+              </DocParticipant>
+            </ProjectDocParticipants>
+            <File>
+              <FileName>10-22-КР.2.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>1A3F26A6</FileChecksum>
+              <SignFile>
+                <FileName>10-22-КР.2.pdf.sig</FileName>
+                <FileFormat>sig</FileFormat>
+                <RelativePath>ЭЦП</RelativePath>
+                <FileChecksum>F2696D64</FileChecksum>
+              </SignFile>
+            </File>
+          </Document>
+          <Document>
+            <DocName>Часть 3. Несущие конструкции секции С-3,4, С-5,6,7, П-1, П-2</DocName>
+            <DocNumber>10-22-КР.3</DocNumber>
+            <DocChanges>Корректировка №1</DocChanges>
+            <ProjectDocParticipants>
+              <DocParticipant role="Согласование">
+                <Surname>Чамурлиев</Surname>
+                <Name>Василий</Name>
+                <Patronymic>Георгадисович</Patronymic>
+                <SNILS>115-194-688 60</SNILS>
+                <NOPRIZNumber>П-151729</NOPRIZNumber>
+              </DocParticipant>
+            </ProjectDocParticipants>
+            <File>
+              <FileName>10-22-КР.3.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>F41FFD08</FileChecksum>
+              <SignFile>
+                <FileName>10-22-КР.3.pdf.sig</FileName>
+                <FileFormat>sig</FileFormat>
+                <RelativePath>ЭЦП</RelativePath>
+                <FileChecksum>CF05A602</FileChecksum>
+              </SignFile>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section4>
+      <Section5>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section5>
+      <Section6>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section6>
+      <Section7>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section7>
+      <Section8>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section8>
+      <Section9>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section9>
+      <Section10>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section10>
+      <Section11>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section11>
+      <Section12>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section12>
+      <Section13>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section13>
+    </ProjectDocumentation>
+  </NonIndustrialObject>
+  <DesignerNote Title="Состав и границы корректировки №1">
+    <Text>Настоящая пояснительная записка относится только к корректировке №1. Разделы 5–13 не разрабатывались заново в составе данной корректировки; ранее разработанная документация сохраняется без изменений. Отметки о неразработке разделов относятся исключительно к составу корректировки. На экспертизу представлены только ПЗ.1, ПЗ.2, ПЗУ, АР, КР.1, КР.2, КР.3. Изыскания не корректировались и не включены в комплект.</Text>
+  </DesignerNote>
+  <DesignerNote Title="Полный перечень исходных данных и условий из ПЗ.2">
+    <Text>1. Техническое задание на разработку Проектной документации к договору №03-08/22/ПД от 03.08.2022г.</Text>
+    <Text>2. Техническое задание на отвод поверхностных вод и благоустройство территории №86-04-02575 от 22.04.2021г. УКХиБ.</Text>
+    <Text>3. Технические условия на проектирование наружного освещения №674-05 от 27.04.2021г. Уфагорсвет.</Text>
+    <Text>4. Технические условия на присоединение к телекоммуникационной сети №776СП-2021 от 19.10.2021г. АО «Уфанет».</Text>
+    <Text>5. Технические условия для присоединения к электрическим сетям 6 кВ №21-10-19770-04-01-Аврора от 29.11.2021г. ООО «Башкирэнерго».</Text>
+    <Text>6. Технические условия на вынос линий электропередачи ПО «УГЭС» №УГЕС/10.10-4384-52 от 23.06.2022г. ООО «Башкирэнерго».</Text>
+    <Text>7. Технические условия подключения к системам водоснабжения и водоотведения №13-13/195 от 15.07.2022г. ООО «Уфаводоканал»</Text>
+    <Text>8. Технические условия для присоединения к электрическим сетям 6 кВт 2х строительных КТПН №22-10-17853-05-01-Аврора от 25.07.2022г. ООО «Башкирэнерго»</Text>
+    <Text>9. Технические условия на подключение к тепловым сетям №ОПР-22-370-3154 от 15.09.2022г. УИС.</Text>
+    <Text>10. Письмо №15-4435-04 от 22.12.2021г. о возможности переноса существующей вертолеткой площадки. ООО «Корпорация развития республики Башкортостан»</Text>
+    <Text>11. Письмо №19-06/159 от 16.03.2022г. о возможности переноса трансформаторной подстанции, дизель-генераторной установки и кислородной станции на территории ГБУЗ. Министерство здравоохранения.</Text>
+    <Text>12. Письмо №М03-19-06/171 от 24.03.2022г. о проектных решениях новой вертолетной площадки. Министерство здравоохранения.</Text>
+    <Text>13. Письмо №67 от 08.02.2022г. о возможности переноса кислородной станции, трансформаторной подстанции, дизель-генератора и площадки для сбора мусора. АО «Транспортный навигационный центр»</Text>
+    <Text>14. Санитарно-эпидемиологическое заключение №02.БЦ.01.000.Т.001017.07.19 от 07.07.2019г.</Text>
+    <Text>15. Проект Выноса ТП 2379 и ТП 2380. Раздел ПЗ. ООО «Электрические системы и сети»</Text>
+    <Text>16. Проект Выноса ТП 2379 и ТП 2380. Раздел ЭС. ООО «Электрические системы и сети»</Text>
+    <Text>17. Письмо № 01-08/2657 от 08.12.2022. Ответ по экспл верт площадки. ГБУЗ «Республиканский клинический перинатальный центр»</Text>
+    <Text>18. Специальные технические условия на проектирование и строительство, в части обеспечения пожарной безопасности объекта капитального строительства: «Многоквартирный жилой дом с помещениями общественного назначения и паркингом на территории, ограниченной улицами Авроры, Батырской в Кировском районе города Уфы Республики Башкортостан (Жилой дом 2)»</Text>
+    <Text>19. Заключение по результатам рассмотрения специальных технических условий №ИВ-19-2110 от 22.12.2022г. МЧС России.</Text>
+    <Text>20. Договор аренды земельного участка №118-21 (РБ) от 28.08.2021г.</Text>
+    <Text>21. Соглашение №1 о перераспределении земельных участков, находящихся в государственной и муниципальной собственности от 23.03.2023г.</Text>
+    <Text>22. Дополнительное соглашение о внесении изменений в Договор №118-21 (РБ) аренды земельного участка от 26.08.2021 с кадастровым номером 02:55:010836:380 от 14 апреля 2023г.</Text>
+    <Text>23. Градостроительный план земельного участка №РФ-02-2-55-0-00-2023-0324-0 от 19.04.2023г.</Text>
+    <Text>24. Выписка из Единого государственного реестра недвижимости об основных характеристиках и зарегистрированных правах на объект недвижимости с кадастровым номером 02:55:010836:567 от 19.04.2023г.</Text>
+    <Text>25. Выписка №9725085022-20230422-0022 от 22.04.2023 из единого реестра сведений о членах саморегулируемых организаций ООО «ПК «БАДР».</Text>
+    <Text>26. Выписка №7743923570-20230410-1042 от 10.04.2023 из единого реестра сведений о членах саморегулируемых организаций ООО «ПОЖАРНЫЙ ИНЖЕНЕР».</Text>
+    <Text>27. Письмо №КР-1178/2022 от 22.07.2022 о согласовании проекта посадочной площадки у ГБУЗ «Республиканский клинический перинатальный центр».</Text>
+    <Text>28. Письмо №216-04 от 26.04.2023 о продлении ТУ№674-05 от 27.04.2021г.</Text>
+    <Text>29. Задание на корректировку проектной документации №1 от 20 июля 2026г.</Text>
+    <Text>30. Положительное заключение негосударственной экспертизы №02-2-1-3-022079-2023 от 27.04.2023</Text>
+  </DesignerNote>
+  <DesignerNote Title="Технико-экономические показатели и состав квартир">
+    <Text>Площадь застройки жилого дома – 8 310 м2</Text>
+    <Text>Общая площадь здания – 60 222,89 м2</Text>
+    <Text>Количество секций – 7</Text>
+    <Text>Этажность:</Text>
+    <Text>Секция С-1 - 29 этажей (28 жилых)</Text>
+    <Text>Секция С-2 - 29 этажей (28 жилых)</Text>
+    <Text>Секция С-3 - 10 этажей (9 жилых)</Text>
+    <Text>Секция С-4 - 12 этажей (11 жилых)</Text>
+    <Text>Секция С-5 - 14 этажей (13 жилых)</Text>
+    <Text>Секция С-6 - 16 этажей (15 жилых)</Text>
+    <Text>Секция С-7 - 18 этажей (17 жилых)</Text>
+    <Text>Стилобат – 1 этаж</Text>
+    <Text>Общая площадь квартир (с учетом летних помещений) – 39 688,97 м2</Text>
+    <Text>Площадь квартир (без учета летних помещений) – 39 061,87 м2</Text>
+    <Text>Общее количество квартир - 735, в т.ч:</Text>
+    <Text>однокомнатные (без межкомнатных перегородок) – 102;</Text>
+    <Text>двухкомнатные (без межкомнатных перегородок) – 130;</Text>
+    <Text>четырехкомнатные (без межкомнатных перегородок) – 1;</Text>
+    <Text>однокомнатные – 83;</Text>
+    <Text>двухкомнатные – 194;</Text>
+    <Text>трехкомнатные – 113;</Text>
+    <Text>четырехкомнатные – 112.</Text>
+    <Text>Общая площадь нежилых помещений общественного назначения – 967,00 м2</Text>
+    <Text>Количество машиномест с учетом механизированных – 334 шт. Из них 320 м/м на 160 двухуровневых механизированных парковочных системах стеллажного типа. Количество в 1-м уровне 174 м/м</Text>
+    <Text>Общая площадь машиномест – 2 680,93 м2</Text>
+    <Text>Общая площадь кладовых (блоки кладовых) – 48,49 м2</Text>
+    <Text>Количество кладовых – 13 шт.</Text>
+    <Text>Строительный объем:</Text>
+    <Text>надземной части – 245 044,26 м3</Text>
+    <Text>подземной части – 0 м3</Text>
+    <Text>Трансформаторная подстанция – 1 шт.         Площадь трансформаторной подстанции – 49 м2</Text>
+  </DesignerNote>
+  <DesignerNote Title="Ссылки на решения по энергетической эффективности">
+    <Text>Решения и мероприятия по обеспечению соблюдения требований энергетической эффективности и оснащенности зданий, строений, сооружений приборами учета используемых энергетических ресурсов приведены в следующих разделах проектной докумнтации:</Text>
+    <Text>10-22-АР п. б_1), б_2), б_3)</Text>
+    <Text>10-22-КР п. о_2), о_3)</Text>
+    <Text>10-22-ИОС.1 п. ж_1), ж_2), ж_3), ж_4)</Text>
+    <Text>10-22-ИОС.2-3 п. т_2), т_4), т_5)</Text>
+    <Text>10-22-ИОС.4 п. е_1), о_3), о_4)</Text>
+  </DesignerNote>
+  <DesignerNote Title="Идентификационные сведения">
+    <Text>ГИП: Чамурлиев Василий Георгадисович. НРС НОПРИЗ П-151729. Категория пожарной и взрывопожарной опасности не устанавливается. I степень огнестойкости, класс конструктивной пожарной опасности С0, класс функциональной пожарной опасности Ф1.3. Уровень ответственности нормальный, класс сооружения КС-2. Объект не относится к уникальным. Сейсмичность 5 баллов. Код назначения 01.02.001.006.</Text>
+  </DesignerNote>
+  <DesignerAssurance>
+    <Text>Проектная документация разработана в соответствии с градостроительным планом земельного участка, заданием на проектирование и заданием на корректировку №1 от 20.07.2026, градостроительным регламентом, документами об использовании земельного участка для строительства, техническими регламентами, в том числе устанавливающими требования по обеспечению безопасной эксплуатации зданий, строений, сооружений и безопасного использования прилегающих к ним территорий, и с соблюдением технических условий.</Text>
+  </DesignerAssurance>
+</ExplanatoryNote>
