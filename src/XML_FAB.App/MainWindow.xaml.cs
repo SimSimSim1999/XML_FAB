@@ -28,6 +28,7 @@ public partial class MainWindow : Window
         MessagesList.Items.Add("Выберите XML-файл и нажмите «Проверить XML».");
     }
 
+    
     private void OpenXml_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new OpenFileDialog
@@ -61,6 +62,12 @@ public partial class MainWindow : Window
             MessagesList.Items.Clear();
             MessagesList.Items.Add("Схема выбрана. Можно запускать проверку.");
         }
+    }
+
+    private void NewDocument_Click(object sender, RoutedEventArgs e)
+    {
+        var window = new EditorWindow { Owner = this };
+        window.ShowDialog();
     }
 
     private void Validate_Click(object sender, RoutedEventArgs e)
