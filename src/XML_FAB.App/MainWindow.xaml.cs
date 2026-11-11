@@ -44,7 +44,7 @@ public partial class MainWindow : Window
         MessagesList.Items.Clear();
         MessagesList.Items.Add("Данные формы применены.");
         MessagesList.Items.Add($"Шифр: {_draft.ExplanatoryNoteNumber}");
-        MessagesList.Items.Add($"Объект: {_draft.ObjectName}");
+        MessagesList.Items.Add($"Объект: {_draft.NonIndustrialObject.Name}");
     }
 
     private void OpenXml_Click(object sender, RoutedEventArgs e)
