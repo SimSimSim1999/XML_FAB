@@ -31,7 +31,7 @@ public partial class MainWindow : Window
             SchemaPathText.Text = "Не найдена; выберите файл схемы вручную.";
         }
 
-        MessagesList.Items.Add("Создайте документ или выберите XML-файл для проверки.");
+        MessagesList.Items.Add("Создайте проект или выберите XML-файл для проверки.");
     }
 
     private void NewDocument_Click(object sender, RoutedEventArgs e)
@@ -110,6 +110,12 @@ public partial class MainWindow : Window
 
     private void GenerateXml_Click(object sender, RoutedEventArgs e)
     {
+        if (string.IsNullOrWhiteSpace(_draft.ExplanatoryNoteNumber))
+        {
+            MessageBox.Show(this, "Сначала заполните хотя бы шифр пояснительной записки.", "XML FAB", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+
         var dialog = new SaveFileDialog
         {
             Title = "Сохранить сформированный XML",
@@ -130,19 +136,7 @@ public partial class MainWindow : Window
 
             MessagesList.Items.Clear();
             MessagesList.Items.Add($"XML сохранён: {_xmlPath}");
-
-            if (string.IsNullOrWhiteSpace(_schemaPath) || !File.Exists(_schemaPath))
-            {
-                MessagesList.Items.Add("XSD не выбрана; XML не проверен.");
-                return;
-            }
-
-            var result = _validationService.Validate(_xmlPath, _schemaPath);
-            MessagesList.Items.Add(result.IsValid
-                ? "XML прошёл проверку по XSD."
-                : "XML не прошёл проверку по XSD.");
-            foreach (var message in result.Messages)
-                MessagesList.Items.Add(message);
+            MessagesList.Items.Add("Готовый файл сформирован из заполненной формы. Проверка будет выполняться отдельно.");
         }
         catch (Exception ex)
         {
@@ -178,7 +172,7 @@ public partial class MainWindow : Window
 
     private void About_Click(object sender, RoutedEventArgs e) =>
         MessageBox.Show(this,
-            "XML FAB — приложение для заполнения и проверки пояснительной записки.",
+            "XML FAB — приложение для заполнения и генерации XML пояснительной записки.",
             "О программе",
             MessageBoxButton.OK,
             MessageBoxImage.Information);
