@@ -2,6 +2,12 @@ using Microsoft.Win32;
 using System.IO;
 using System.Windows;
 using XML_FAB.Services;
+using System.Xml.Linq;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows;
+using XML_FAB.Models;
+using XML_FAB.Services;
 
 namespace XML_FAB;
 
@@ -10,6 +16,9 @@ public partial class MainWindow : Window
     private readonly XmlSchemaValidationService _validationService = new();
     private string? _xmlPath;
     private string? _schemaPath;
+    private readonly XmlGeneratorService _xmlGenerator = new();
+    private readonly DocumentStorageService _storage = new();
+    private readonly ExplanatoryNoteModel _draft = new();
 
     public MainWindow()
     {
@@ -90,6 +99,84 @@ public partial class MainWindow : Window
         foreach (var message in result.Messages)
             MessagesList.Items.Add(message);
     }
+
+    private void NewDocument_Click(object sender, RoutedEventArgs e)
+{
+    var window = new EditorWindow { Owner = this };
+    window.ShowDialog();
+}
+
+private void SaveProject_Click(object sender, RoutedEventArgs e)
+{
+    var dialog = new SaveFileDialog
+    {
+        Title = "Сохранить проект",
+        Filter = "XML FAB project (*.json)|*.json",
+        DefaultExt = ".json",
+        AddExtension = true,
+        FileName = "project.json"
+    };
+
+    if (dialog.ShowDialog(this) != true)
+        return;
+
+    try
+    {
+        _storage.SaveDraft(dialog.FileName, _draft);
+        MessagesList.Items.Clear();
+        MessagesList.Items.Add($"Проект сохранён: {dialog.FileName}");
+    }
+    catch (Exception ex)
+    {
+        MessagesList.Items.Clear();
+        MessagesList.Items.Add($"Ошибка сохранения проекта: {ex.Message}");
+    }
+}
+
+private void GenerateXml_Click(object sender, RoutedEventArgs e)
+{
+    if (string.IsNullOrWhiteSpace(_draft.ExplanatoryNoteNumber))
+    {
+        MessageBox.Show(this, "Сначала заполните хотя бы шифр пояснительной записки.", "XML FAB", MessageBoxButton.OK, MessageBoxImage.Warning);
+        return;
+    }
+
+    var dialog = new SaveFileDialog
+    {
+        Title = "Сохранить XML",
+        Filter = "XML files (*.xml)|*.xml",
+        DefaultExt = ".xml",
+        AddExtension = true,
+        FileName = "explanatorynote.xml"
+    };
+
+    if (dialog.ShowDialog(this) != true)
+        return;
+
+    try
+    {
+        var xml = _xmlGenerator.Generate(_draft);
+        _xmlGenerator.SaveXml(dialog.FileName, xml);
+
+        MessagesList.Items.Clear();
+        MessagesList.Items.Add($"XML сформирован: {dialog.FileName}");
+        MessagesList.Items.Add("Проверка происходит через XSD после сохранения.");
+
+        if (!string.IsNullOrWhiteSpace(_schemaPath) && File.Exists(_schemaPath))
+        {
+            var validator = new XmlSchemaValidationService();
+            var result = validator.Validate(dialog.FileName, _schemaPath);
+            MessagesList.Items.Add(result.IsValid ? "XML успешно прошёл проверку по XSD." : "XML не прошёл проверку по XSD.");
+            foreach (var msg in result.Messages)
+                MessagesList.Items.Add(msg);
+        }
+    }
+    catch (Exception ex)
+    {
+        MessagesList.Items.Clear();
+        MessagesList.Items.Add($"Ошибка генерации XML: {ex.Message}");
+    }
+}
 
     private void Exit_Click(object sender, RoutedEventArgs e) => Close();
 
