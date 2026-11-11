@@ -9,9 +9,9 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="0,14,0,0">
-            <Button Content="Сохранить черновик…"
-                    Click="SaveDraft_Click"
-                    Padding="14,8" />
+                <Button Content="Применить"
+                        Click="Apply_Click"
+                        Padding="14,8" />
         </StackPanel>
 
         <TabControl>
