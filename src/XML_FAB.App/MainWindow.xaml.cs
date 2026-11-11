@@ -18,7 +18,6 @@ public partial class MainWindow : Window
     private string? _schemaPath;
     private readonly XmlGeneratorService _xmlGenerator = new();
     private readonly DocumentStorageService _storage = new();
-    private readonly ExplanatoryNoteModel _draft = new();
     private ExplanatoryNoteModel _draft = new();
 
     public MainWindow()
@@ -109,11 +108,6 @@ public partial class MainWindow : Window
             MessagesList.Items.Add(message);
     }
 
-    private void NewDocument_Click(object sender, RoutedEventArgs e)
-{
-    var window = new EditorWindow { Owner = this };
-    window.ShowDialog();
-}
 
 private void SaveProject_Click(object sender, RoutedEventArgs e)
 {
