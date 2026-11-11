@@ -1,20 +1,18 @@
 using System.IO;
 using System.Xml;
 using System.Xml.Schema;
-using System.Xml;
-using System.Xml.Schema;
 
 namespace XML_FAB.Services;
 
 public sealed record XmlValidationResult(bool IsValid, IReadOnlyList<string> Messages);
 
-/// <summary>Validates an XML document against a user-selected local XSD schema.</summary>
 public sealed class XmlSchemaValidationService
 {
     public XmlValidationResult Validate(string xmlPath, string schemaPath)
     {
         var messages = new List<string>();
         var schemaIsValid = true;
+        var documentHasErrors = false;
 
         try
         {
@@ -40,13 +38,17 @@ public sealed class XmlSchemaValidationService
             };
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessIdentityConstraints;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-            settings.ValidationEventHandler += (_, args) => messages.Add(Format(args));
+            settings.ValidationEventHandler += (_, args) =>
+            {
+                messages.Add(Format(args));
+                if (args.Severity == XmlSeverityType.Error)
+                    documentHasErrors = true;
+            };
 
             using var reader = XmlReader.Create(xmlPath, settings);
             while (reader.Read()) { }
 
-            var hasErrors = messages.Any(m => m.StartsWith("Ошибка:", StringComparison.Ordinal));
-            return new XmlValidationResult(!hasErrors, messages);
+            return new XmlValidationResult(!documentHasErrors, messages);
         }
         catch (XmlException ex)
         {
