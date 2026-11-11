@@ -9,9 +9,9 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="0,14,0,0">
-                <Button Content="Применить"
-                        Click="Apply_Click"
-                        Padding="14,8" />
+            <Button Content="Применить"
+                    Click="Apply_Click"
+                    Padding="14,8" />
         </StackPanel>
 
         <TabControl>
@@ -34,10 +34,6 @@
                         <TextBlock Text="Гриф ограничения доступа" />
                         <TextBox Text="{Binding AccessRestriction, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="0,4,0,14" />
-
-                        <TextBlock Text="* Обязательность указана для полей, обязательных по XSD."
-                                   Foreground="#64748B"
-                                   TextWrapping="Wrap" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -55,20 +51,16 @@
                                  Margin="0,4,0,14" />
 
                         <TextBlock Text="Сокращённое наименование" />
-                        <TextBox Text="{Binding AuthorInn, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox Text="{Binding AuthorShortName, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="0,4,0,14" />
 
                         <TextBlock Text="ОГРН" />
-                        <TextBox x:Name="AuthorOgrnTextBox"
+                        <TextBox Text="{Binding AuthorOgrn, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="0,4,0,14" />
 
                         <TextBlock Text="ИНН" />
-                        <TextBox x:Name="AuthorInnTextBox"
+                        <TextBox Text="{Binding AuthorInn, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="0,4,0,14" />
-
-                        <TextBlock Text="Поля будут уточнены и дополнены по ограничениям XSD."
-                                   Foreground="#64748B"
-                                   TextWrapping="Wrap" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -82,13 +74,13 @@
                                    Margin="0,0,0,18" />
 
                         <TextBlock Text="Тип объекта *" />
-                       <ComboBox SelectedValuePath="Tag"
-                            SelectedValue="{Binding ObjectType, UpdateSourceTrigger=PropertyChanged}"
-                            Margin="0,4,0,14">
+                        <ComboBox SelectedValuePath="Tag"
+                                  SelectedValue="{Binding ObjectType, UpdateSourceTrigger=PropertyChanged}"
+                                  Margin="0,4,0,14">
                             <ComboBoxItem Content="Непроизводственный" Tag="NonIndustrialObject" />
                             <ComboBoxItem Content="Производственный" Tag="IndustrialObject" />
                             <ComboBoxItem Content="Линейный" Tag="LinearObject" />
-                         </ComboBox>
+                        </ComboBox>
 
                         <TextBlock Text="Наименование объекта *" />
                         <TextBox Text="{Binding ObjectName, UpdateSourceTrigger=PropertyChanged}"
@@ -97,11 +89,6 @@
                         <TextBlock Text="Идентификатор объекта (ObjectID) *" />
                         <TextBox Text="{Binding ObjectId, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="0,4,0,14" />
-                                 Margin="0,4,0,14" />
-
-                        <TextBlock Text="Это пока начальный набор полей. Для формирования корректного XML нужны остальные обязательные сведения по выбранному типу объекта."
-                                   Foreground="#64748B"
-                                   TextWrapping="Wrap" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
