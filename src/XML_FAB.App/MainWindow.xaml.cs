@@ -19,6 +19,7 @@ public partial class MainWindow : Window
     private readonly XmlGeneratorService _xmlGenerator = new();
     private readonly DocumentStorageService _storage = new();
     private readonly ExplanatoryNoteModel _draft = new();
+    private ExplanatoryNoteModel _draft = new();
 
     public MainWindow()
     {
@@ -73,10 +74,18 @@ public partial class MainWindow : Window
         }
     }
 
-    private void NewDocument_Click(object sender, RoutedEventArgs e)
+       private void NewDocument_Click(object sender, RoutedEventArgs e)
     {
-        var window = new EditorWindow { Owner = this };
-        window.ShowDialog();
+        var editor = new EditorWindow { Owner = this };
+    
+        if (editor.ShowDialog() == true)
+        {
+            _draft = editor.Model;
+            MessagesList.Items.Clear();
+            MessagesList.Items.Add("Данные формы применены.");
+            MessagesList.Items.Add($"Шифр: {_draft.ExplanatoryNoteNumber}");
+            MessagesList.Items.Add($"Объект: {_draft.ObjectName}");
+        }
     }
 
     private void Validate_Click(object sender, RoutedEventArgs e)
