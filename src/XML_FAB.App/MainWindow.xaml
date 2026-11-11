@@ -17,6 +17,16 @@
             <MenuItem Header="Справка">
                 <MenuItem Header="О программе" Click="About_Click" />
             </MenuItem>
+         <MenuItem Header="Файл">
+            <MenuItem Header="Открыть XML для проверки…" Click="OpenXml_Click" />
+            <MenuItem Header="Выбрать XSD…" Click="OpenSchema_Click" />
+            <MenuItem Header="Создать черновик…" Click="NewDocument_Click" />
+            <Separator />
+            <MenuItem Header="Сохранить проект…" Click="SaveProject_Click" />
+            <MenuItem Header="Сформировать XML…" Click="GenerateXml_Click" />
+            <Separator />
+            <MenuItem Header="Выход" Click="Exit_Click" />
+        </MenuItem>       
         </Menu>
 
         <Grid>
@@ -68,9 +78,10 @@
                     <ListBox x:Name="MessagesList" BorderThickness="0" />
                 </GroupBox>
 
-                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+               <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
                     <Button Content="Открыть XML…" Click="OpenXml_Click" Padding="16,9" Margin="0,0,10,0" />
-                    <Button Content="Проверить XML" Click="Validate_Click" Padding="16,9" Background="{StaticResource AccentBrush}" Foreground="White" BorderThickness="0" />
+                    <Button Content="Сохранить проект…" Click="SaveProject_Click" Padding="16,9" Margin="0,0,10,0" />
+                    <Button Content="Сформировать XML" Click="GenerateXml_Click" Padding="16,9" Background="{StaticResource AccentBrush}" Foreground="White" BorderThickness="0" />
                 </StackPanel>
             </Grid>
         </Grid>
