@@ -19,6 +19,8 @@
                 <MenuItem Header="Выход" Click="Exit_Click" />
             </MenuItem>
             <MenuItem Header="Справка">
+                <MenuItem Header="Выгрузить отчет об ошибке проверки XML…" Click="ExportValidationReport_Click" />
+                <Separator />
                 <MenuItem Header="О программе" Click="About_Click" />
             </MenuItem>
         </Menu>
@@ -64,7 +66,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Проект и проверка XML" FontSize="26" FontWeight="SemiBold" />
-                <TextBlock Grid.Row="1" Text="Создайте проект, сохраните его в JSON и открывайте позже для продолжения работы." TextWrapping="Wrap" Foreground="#64748B" Margin="0,8,0,16" />
+                <TextBlock Grid.Row="1" Text="Создайте проект, сохраните его в JSON и открывайте позже для продолжения работы. Отчет об ошибках доступен в меню «Справка»." TextWrapping="Wrap" Foreground="#64748B" Margin="0,8,0,16" />
 
                 <GroupBox Grid.Row="2" Header="Состояние проекта и сообщения" Padding="10">
                     <ListBox x:Name="MessagesList" BorderThickness="0" />

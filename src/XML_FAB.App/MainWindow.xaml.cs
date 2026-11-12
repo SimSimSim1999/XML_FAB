@@ -1,5 +1,6 @@
 using Microsoft.Win32;
 using System.IO;
+using System.Text;
 using System.Windows;
 using XML_FAB.Models;
 using XML_FAB.Services;
@@ -16,6 +17,8 @@ public partial class MainWindow : Window
     private string? _schemaPath;
     private string? _projectPath;
     private ExplanatoryNoteModel _draft = new();
+    private XmlValidationResult? _lastValidationResult;
+    private DateTimeOffset? _lastValidationAt;
 
     public MainWindow()
     {
@@ -45,10 +48,12 @@ public partial class MainWindow : Window
         _draft = editor.Model;
         _projectPath = null;
         _xmlPath = null;
+        _lastValidationResult = null;
+        _lastValidationAt = null;
         UpdateProjectStatus("Новый проект — ещё не сохранён.");
         ShowProjectSummary("Создан новый проект.");
 
-        // Предлагаем сразу сохранить проект в выбранное пользователем место.
+        // Предлагаем сразу выбрать имя и место для JSON-проекта.
         SaveProject_Click(sender, e);
     }
 
@@ -69,6 +74,8 @@ public partial class MainWindow : Window
             _draft = _projectStorage.Load(dialog.FileName);
             _projectPath = Path.GetFullPath(dialog.FileName);
             _xmlPath = null;
+            _lastValidationResult = null;
+            _lastValidationAt = null;
             UpdateProjectStatus(_projectPath);
             ShowProjectSummary("Проект открыт.");
         }
@@ -85,10 +92,12 @@ public partial class MainWindow : Window
             return;
 
         _draft = editor.Model;
+        _lastValidationResult = null;
+        _lastValidationAt = null;
         UpdateProjectStatus(string.IsNullOrWhiteSpace(_projectPath)
             ? "Новый проект — ещё не сохранён."
             : _projectPath);
-        ShowProjectSummary("Изменения применены.");
+        ShowProjectSummary("Изменения применены. Не забудьте сохранить проект.");
     }
 
     private void SaveProject_Click(object sender, RoutedEventArgs e)
@@ -139,8 +148,11 @@ public partial class MainWindow : Window
             return;
 
         _xmlPath = dialog.FileName;
+        _lastValidationResult = null;
+        _lastValidationAt = null;
         MessagesList.Items.Clear();
         MessagesList.Items.Add($"Выбран XML: {_xmlPath}");
+        MessagesList.Items.Add("Нажмите «Проверить XML», чтобы получить результаты проверки.");
     }
 
     private void OpenSchema_Click(object sender, RoutedEventArgs e)
@@ -157,8 +169,11 @@ public partial class MainWindow : Window
 
         _schemaPath = dialog.FileName;
         SchemaPathText.Text = _schemaPath;
+        _lastValidationResult = null;
+        _lastValidationAt = null;
         MessagesList.Items.Clear();
         MessagesList.Items.Add("Схема выбрана. Можно запускать проверку.");
+        MessagesList.Items.Add(_schemaPath);
     }
 
     private void GenerateXml_Click(object sender, RoutedEventArgs e)
@@ -186,6 +201,8 @@ public partial class MainWindow : Window
             var xml = _xmlGenerator.Generate(_draft);
             _xmlGenerator.SaveXml(dialog.FileName, xml);
             _xmlPath = dialog.FileName;
+            _lastValidationResult = null;
+            _lastValidationAt = null;
 
             MessagesList.Items.Clear();
             MessagesList.Items.Add($"XML сохранён: {_xmlPath}");
@@ -212,13 +229,82 @@ public partial class MainWindow : Window
             return;
         }
 
-        MessagesList.Items.Clear();
-        var result = _validationService.Validate(_xmlPath, _schemaPath);
-        MessagesList.Items.Add(result.IsValid
-            ? "XML прошёл проверку по XSD."
-            : "XML не прошёл проверку либо схема содержит ошибку.");
-        foreach (var message in result.Messages)
-            MessagesList.Items.Add(message);
+        try
+        {
+            _lastValidationResult = _validationService.Validate(_xmlPath, _schemaPath);
+            _lastValidationAt = DateTimeOffset.Now;
+
+            MessagesList.Items.Clear();
+            MessagesList.Items.Add(_lastValidationResult.IsValid
+                ? "XML прошёл проверку по XSD."
+                : "XML не прошёл проверку либо схема содержит ошибку.");
+            MessagesList.Items.Add($"Проверено: {_lastValidationAt:yyyy-MM-dd HH:mm:ss}");
+            foreach (var message in _lastValidationResult.Messages)
+                MessagesList.Items.Add(message);
+        }
+        catch (Exception ex)
+        {
+            _lastValidationResult = new XmlValidationResult(false, new[] { $"Не удалось выполнить проверку: {ex.Message}" });
+            _lastValidationAt = DateTimeOffset.Now;
+            MessagesList.Items.Clear();
+            MessagesList.Items.Add("Не удалось выполнить проверку XML.");
+            MessagesList.Items.Add(ex.Message);
+        }
+    }
+
+    private void ExportValidationReport_Click(object sender, RoutedEventArgs e)
+    {
+        if (_lastValidationResult is null)
+        {
+            MessageBox.Show(this,
+                "Сначала выберите XML-файл и нажмите «Проверить XML». Затем можно будет выгрузить отчет с результатом и ошибками.",
+                "Отчет проверки XML",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+            return;
+        }
+
+        var dialog = new SaveFileDialog
+        {
+            Title = "Сохранить отчет проверки XML",
+            Filter = "Текстовый отчет (*.txt)|*.txt",
+            DefaultExt = ".txt",
+            AddExtension = true,
+            FileName = $"xml-validation-report-{DateTime.Now:yyyyMMdd-HHmmss}.txt"
+        };
+
+        if (dialog.ShowDialog(this) != true)
+            return;
+
+        var report = new StringBuilder();
+        report.AppendLine("XML FAB — отчет проверки XML по XSD");
+        report.AppendLine($"Дата проверки: {_lastValidationAt?.ToString("yyyy-MM-dd HH:mm:ss zzz") ?? "не указана"}");
+        report.AppendLine($"Результат: {(_lastValidationResult.IsValid ? "УСПЕШНО" : "ОШИБКИ / ПРЕДУПРЕЖДЕНИЯ")}");
+        report.AppendLine($"XML-файл: {_xmlPath ?? "не указан"}");
+        report.AppendLine($"XSD-схема: {_schemaPath ?? "не указана"}");
+        report.AppendLine();
+        report.AppendLine("Сообщения проверки:");
+
+        if (_lastValidationResult.Messages.Count == 0)
+        {
+            report.AppendLine("Сообщений нет.");
+        }
+        else
+        {
+            for (var index = 0; index < _lastValidationResult.Messages.Count; index++)
+                report.AppendLine($"{index + 1}. {_lastValidationResult.Messages[index]}");
+        }
+
+        try
+        {
+            File.WriteAllText(dialog.FileName, report.ToString(), new UTF8Encoding(encoderShouldEmitUTF8Identifier: true));
+            MessagesList.Items.Add($"Отчет проверки сохранён: {dialog.FileName}");
+            MessageBox.Show(this, "Отчет сохранён. Его можно прикрепить к сообщению или отправить разработчику.", "Отчет проверки XML", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(this, $"Не удалось сохранить отчет: {ex.Message}", "Отчет проверки XML", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 
     private void ShowProjectSummary(string title)
