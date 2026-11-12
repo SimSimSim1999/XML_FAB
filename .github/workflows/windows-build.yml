@@ -1,0 +1,30 @@
+name: Windows WPF build
+
+on:
+  push:
+    paths:
+      - "src/XML_FAB.App/**"
+      - ".github/workflows/windows-build.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/XML_FAB.App/**"
+      - ".github/workflows/windows-build.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build WPF application
+        run: dotnet build src/XML_FAB.App/XML_FAB.App.csproj --configuration Release

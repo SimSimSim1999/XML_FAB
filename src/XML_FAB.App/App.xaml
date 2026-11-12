@@ -1,0 +1,9 @@
+<Application x:Class="XML_FAB.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="AccentBrush" Color="#2563EB" />
+        <SolidColorBrush x:Key="SidebarBrush" Color="#F1F5F9" />
+    </Application.Resources>
+</Application>
