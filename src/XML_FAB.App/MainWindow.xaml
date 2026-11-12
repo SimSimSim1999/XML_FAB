@@ -9,11 +9,13 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать проект…" Click="NewDocument_Click" />
-                <MenuItem Header="Открыть XML для проверки…" Click="OpenXml_Click" />
-                <MenuItem Header="Выбрать XSD…" Click="OpenSchema_Click" />
+                <MenuItem Header="Открыть проект…" Click="OpenProject_Click" />
+                <MenuItem Header="Редактировать проект…" Click="EditProject_Click" />
+                <MenuItem Header="Сохранить проект" Click="SaveProject_Click" />
                 <Separator />
-                <MenuItem Header="Сохранить проект…" Click="SaveProject_Click" />
+                <MenuItem Header="Открыть XML для проверки…" Click="OpenXml_Click" />
                 <MenuItem Header="Сформировать XML…" Click="GenerateXml_Click" />
+                <MenuItem Header="Выбрать XSD…" Click="OpenSchema_Click" />
                 <Separator />
                 <MenuItem Header="Выход" Click="Exit_Click" />
             </MenuItem>
@@ -31,13 +33,23 @@
             <Border Grid.Column="0" Background="{StaticResource SidebarBrush}" Padding="18">
                 <StackPanel>
                     <TextBlock Text="XML FAB" FontSize="22" FontWeight="Bold" Margin="0,0,0,20" />
-                    <TextBlock Text="РАБОЧИЙ ПРОЦЕСС" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <TextBlock Text="ПРОЕКТ" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
                     <Button Content="Создать проект" Click="NewDocument_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
+                    <Button Content="Открыть проект…" Click="OpenProject_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
+                    <Button Content="Редактировать проект" Click="EditProject_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
+                    <Button Content="Сохранить проект" Click="SaveProject_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,18" />
+
+                    <TextBlock Text="ПРОЕКТНЫЙ ФАЙЛ" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <TextBlock x:Name="ProjectStatusText" Text="Проект не выбран" TextWrapping="Wrap" ToolTip="Проект не выбран" Margin="0,0,0,18" />
+
+                    <TextBlock Text="ПРОВЕРКА XML" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <Button Content="Открыть XML…" Click="OpenXml_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
                     <Button Content="Проверить XML" Click="Validate_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,4" />
-                    <Button Content="Экспорт PDF (позже)" IsEnabled="False" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,18" />
-                    <TextBlock Text="ИНСТРУМЕНТЫ" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <Button Content="Сформировать XML…" Click="GenerateXml_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,18" />
+
+                    <TextBlock Text="СХЕМА ПРОВЕРКИ" Foreground="#64748B" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,8" />
                     <Button Content="Выбрать XSD…" Click="OpenSchema_Click" HorizontalContentAlignment="Left" Padding="10" Margin="0,0,0,8" />
-                    <TextBlock Text="Схема задаёт структуру XML. Обычно используется встроенная XSD, но можно выбрать другую версию для проверки." TextWrapping="Wrap" Foreground="#64748B" />
+                    <TextBlock Text="XSD задаёт структуру и правила проверки XML." TextWrapping="Wrap" Foreground="#64748B" />
                 </StackPanel>
             </Border>
 
@@ -50,8 +62,8 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Проверка XML по XSD" FontSize="26" FontWeight="SemiBold" />
-                <TextBlock Grid.Row="1" Text="Создайте проект через форму или выберите существующий XML-файл для проверки." TextWrapping="Wrap" Foreground="#64748B" Margin="0,8,0,16" />
+                <TextBlock Text="Проект и проверка XML" FontSize="26" FontWeight="SemiBold" />
+                <TextBlock Grid.Row="1" Text="Создайте проект, сохраните его в JSON и открывайте позже для продолжения работы." TextWrapping="Wrap" Foreground="#64748B" Margin="0,8,0,16" />
 
                 <Border Grid.Row="2" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,16">
                     <Grid>
@@ -66,7 +78,7 @@
                     </Grid>
                 </Border>
 
-                <GroupBox Grid.Row="3" Header="Результат проверки и сообщения" Padding="10">
+                <GroupBox Grid.Row="3" Header="Состояние проекта и сообщения" Padding="10">
                     <ListBox x:Name="MessagesList" BorderThickness="0" />
                 </GroupBox>
 

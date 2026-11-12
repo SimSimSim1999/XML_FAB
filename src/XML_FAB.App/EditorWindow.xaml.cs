@@ -5,11 +5,16 @@ namespace XML_FAB;
 
 public partial class EditorWindow : Window
 {
-    public ExplanatoryNoteModel Model { get; } = new();
+    public ExplanatoryNoteModel Model { get; }
 
-    public EditorWindow()
+    public EditorWindow() : this(new ExplanatoryNoteModel())
+    {
+    }
+
+    public EditorWindow(ExplanatoryNoteModel model)
     {
         InitializeComponent();
+        Model = model;
         DataContext = Model;
     }
 
