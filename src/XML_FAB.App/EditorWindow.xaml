@@ -19,23 +19,17 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
                         <TextBlock Text="Пояснительная записка" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
-
                         <TextBlock Text="Шифр пояснительной записки *" />
                         <TextBox Text="{Binding ExplanatoryNoteNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Год составления *" />
                         <TextBox Text="{Binding ExplanatoryNoteYear, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Гриф ограничения доступа" />
                         <TextBox Text="{Binding AccessRestriction, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Изменения" FontWeight="SemiBold" Margin="0,12,0,8" />
                         <TextBlock Text="Номер корректировки" />
                         <TextBox Text="{Binding ExplanatoryNoteModifications[0].ModificationNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
-
                         <TextBlock Text="Дата корректировки" />
                         <TextBox Text="{Binding ExplanatoryNoteModifications[0].ModificationDate, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
-
                         <TextBlock Text="Описание корректировки" />
                         <TextBox Text="{Binding ExplanatoryNoteModifications[0].ModificationNote, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" Height="80" Margin="0,4,0,14" />
                     </StackPanel>
@@ -46,25 +40,18 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
                         <TextBlock Text="Автор пояснительной записки" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
-
                         <TextBlock Text="Полное наименование" />
                         <TextBox Text="{Binding IssueAuthor.FullName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Сокращённое наименование" />
                         <TextBox Text="{Binding IssueAuthor.AbbreviatedName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="ОГРН" />
                         <TextBox Text="{Binding IssueAuthor.Ogrn, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="ИНН" />
                         <TextBox Text="{Binding IssueAuthor.Inn, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="КПП" />
                         <TextBox Text="{Binding IssueAuthor.Kpp, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
-                        <TextBlock Text="НОПРИЗ" />
+                        <TextBlock Text="НОПРИЗ организации" />
                         <TextBox Text="{Binding IssueAuthor.NOPRIZNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Адрес" FontWeight="SemiBold" Margin="0,12,0,8" />
                         <TextBlock Text="Код региона" />
                         <TextBox Text="{Binding IssueAuthor.Address.RegionCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
@@ -84,11 +71,30 @@
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="3. Разработчик">
+            <TabItem Header="3. Подписанты">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
-                        <TextBlock Text="Разработчик проекта" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
+                        <TextBlock Text="Главный инженер проекта / подписант" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
+                        <TextBlock Text="Роль" />
+                        <TextBox Text="{Binding Signers[0].Role, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Фамилия" />
+                        <TextBox Text="{Binding Signers[0].Surname, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Имя" />
+                        <TextBox Text="{Binding Signers[0].Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Отчество" />
+                        <TextBox Text="{Binding Signers[0].Patronymic, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="СНИЛС" />
+                        <TextBox Text="{Binding Signers[0].Snils, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="НОПРИЗ специалиста" />
+                        <TextBox Text="{Binding Signers[0].NOPRIZNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
 
+            <TabItem Header="4. Застройщик / заказчик">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
+                        <TextBlock Text="Застройщик или технический заказчик — текущая форма организации" FontSize="23" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,0,18" />
                         <TextBlock Text="Полное наименование" />
                         <TextBox Text="{Binding Developer.FullName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="Сокращённое наименование" />
@@ -99,84 +105,111 @@
                         <TextBox Text="{Binding Developer.Inn, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="КПП" />
                         <TextBox Text="{Binding Developer.Kpp, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Адрес" FontWeight="SemiBold" Margin="0,12,0,8" />
+                        <TextBlock Text="Код региона" />
+                        <TextBox Text="{Binding Developer.Address.RegionCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="ОКТМО" />
+                        <TextBox Text="{Binding Developer.Address.OktmoCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Наименование ОКТМО" />
+                        <TextBox Text="{Binding Developer.Address.OktmoName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Город" />
+                        <TextBox Text="{Binding Developer.Address.City, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Улица" />
+                        <TextBox Text="{Binding Developer.Address.Street, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Дом" />
+                        <TextBox Text="{Binding Developer.Address.Building, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Помещение / этаж" />
+                        <TextBox Text="{Binding Developer.Address.Room, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Примечание: выбор типа (организация / ИП / физлицо), технический заказчик и ФИО физлица будут добавлены отдельным этапом." TextWrapping="Wrap" Foreground="#64748B" Margin="0,8,0,0" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="4. Объект">
+            <TabItem Header="5. Нормы и документы">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
+                        <TextBlock Text="Нормы и документы" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
+                        <TextBlock Text="Нормы и правила (первая запись)" />
+                        <TextBox Text="{Binding UsedNorms[0], UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Документы-основания" FontWeight="SemiBold" Margin="0,12,0,8" />
+                        <TextBlock Text="Тип документа" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocType, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Наименование" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Номер" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Дата (ГГГГ-ММ-ДД)" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocDate, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Автор / издатель" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocIssueAuthor, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Включение / приложение" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].Included, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Файл: имя" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].File.FileName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Файл: формат" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].File.FileFormat, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Файл: контрольная сумма" />
+                        <TextBox Text="{Binding ProjectDecisionDocuments[0].File.FileChecksum, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Дополнительные материалы" FontWeight="SemiBold" Margin="0,12,0,8" />
+                        <TextBlock Text="Описание материала" />
+                        <TextBox Text="{Binding AdditionalData[0].DataDescription, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Имя файла" />
+                        <TextBox Text="{Binding AdditionalData[0].File.FileName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Формат файла" />
+                        <TextBox Text="{Binding AdditionalData[0].File.FileFormat, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10" />
+                        <TextBlock Text="Контрольная сумма" />
+                        <TextBox Text="{Binding AdditionalData[0].File.FileChecksum, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Примечание: список повторяемых документов и выбор типов из справочника XSD будут реализованы отдельно." TextWrapping="Wrap" Foreground="#64748B" Margin="0,8,0,0" />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="6. Объект">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
                         <TextBlock Text="Объект капитального строительства" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
-
                         <TextBlock Text="Тип объекта" />
                         <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding NonIndustrialObject.TypeName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14">
                             <ComboBoxItem Content="Непроизводственный" Tag="NonIndustrialObject" />
                             <ComboBoxItem Content="Производственный" Tag="IndustrialObject" />
                             <ComboBoxItem Content="Линейный" Tag="LinearObject" />
                         </ComboBox>
-
                         <TextBlock Text="Наименование объекта" />
                         <TextBox Text="{Binding NonIndustrialObject.Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
-                        <TextBlock Text="ObjectID" />
+                        <TextBlock Text="ObjectID (XML ID, должен начинаться с буквы)" />
                         <TextBox Text="{Binding NonIndustrialObject.ObjectId, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
+                        <TextBlock Text="Тип работ / ConstructionType" />
+                        <TextBox Text="{Binding NonIndustrialObject.ConstructionType, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
                         <TextBlock Text="Район" />
                         <TextBox Text="{Binding NonIndustrialObject.Address.District, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Код региона" />
                         <TextBox Text="{Binding NonIndustrialObject.Address.RegionCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="ОКТМО" />
                         <TextBox Text="{Binding NonIndustrialObject.Address.OktmoCode, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
-                        <TextBlock Text="ОКТМО имя" />
+                        <TextBlock Text="Наименование ОКТМО" />
                         <TextBox Text="{Binding NonIndustrialObject.Address.OktmoName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Город" />
                         <TextBox Text="{Binding NonIndustrialObject.Address.City, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Улица" />
                         <TextBox Text="{Binding NonIndustrialObject.Address.Street, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Дом" />
                         <TextBox Text="{Binding NonIndustrialObject.Address.Building, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Помещение / этаж" />
+                        <TextBox Text="{Binding NonIndustrialObject.Address.Room, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
+                        <TextBlock Text="Важно: обязательные подразделы функций, показателей, энергоэффективности, ресурсов, земель и проектной документации будут добавляться по типу объекта отдельным этапом." TextWrapping="Wrap" Foreground="#64748B" Margin="0,8,0,0" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="5. Документы">
+            <TabItem Header="7. Примечания">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
-                        <TextBlock Text="Документы и нормативы" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
-
-                        <TextBlock Text="Нормы и правила" />
-                        <TextBox Text="{Binding UsedNorms[0], UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
-                        <TextBlock Text="Проектное решение / документ" />
-                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
-                        <TextBlock Text="Тип документа" />
-                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocType, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
-                        <TextBlock Text="Номер документа" />
-                        <TextBox Text="{Binding ProjectDecisionDocuments[0].DocNumber, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-                    </StackPanel>
-                </ScrollViewer>
-            </TabItem>
-
-            <TabItem Header="6. Примечания">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="18" MaxWidth="700" HorizontalAlignment="Left">
-                        <TextBlock Text="Примечания и пояснения" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
-
+                        <TextBlock Text="Примечания и заверение" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,18" />
                         <TextBlock Text="Заголовок примечания" />
                         <TextBox Text="{Binding DesignerNotes[0].Title, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14" />
-
                         <TextBlock Text="Текст примечания" />
                         <TextBox Text="{Binding DesignerNotes[0].Text[0], UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" Height="100" Margin="0,4,0,14" />
-
-                        <TextBlock Text="Гарантия проектировщика" />
+                        <TextBlock Text="Заверение проектной организации" />
                         <TextBox Text="{Binding DesignerAssurance[0], UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" Height="120" Margin="0,4,0,14" />
                     </StackPanel>
                 </ScrollViewer>
