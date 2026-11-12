@@ -28,41 +28,41 @@ public sealed class ExplanatoryNoteModel
         ExplanatoryNoteModifications.Add(new ModificationItem());
         IssueAuthor = new OrganizationInfo
         {
-            FullName = "",
-            AbbreviatedName = "",
-            Ogrn = "",
-            Inn = "",
-            Kpp = "",
-            NOPRIZNumber = "",
+            FullName = string.Empty,
+            AbbreviatedName = string.Empty,
+            Ogrn = string.Empty,
+            Inn = string.Empty,
+            Kpp = string.Empty,
+            NOPRIZNumber = string.Empty,
             Address = new AddressInfo()
         };
 
         Developer = new OrganizationInfo
         {
-            FullName = "",
-            AbbreviatedName = "",
-            Ogrn = "",
-            Inn = "",
-            Kpp = "",
-            NOPRIZNumber = "",
+            FullName = string.Empty,
+            AbbreviatedName = string.Empty,
+            Ogrn = string.Empty,
+            Inn = string.Empty,
+            Kpp = string.Empty,
+            NOPRIZNumber = string.Empty,
             Address = new AddressInfo()
         };
 
         Signers.Add(new SignerInfo());
-        UsedNorms.Add("Нормативные документы не указаны");
+        UsedNorms.Add(string.Empty);
         ProjectDecisionDocuments.Add(new ProjectDocument());
         ProjectInitialDocuments.Add(new ProjectDocument());
-        AdditionalData.Add(new AdditionalDataItem { DataDescription = "", File = new FileInfo { FileName = "", FileFormat = "pdf", FileChecksum = "" } });
+        AdditionalData.Add(new AdditionalDataItem { DataDescription = string.Empty, File = new FileInfo() });
         NonIndustrialObject = new ObjectInfo
         {
             TypeName = "NonIndustrialObject",
             ObjectId = Guid.NewGuid().ToString().ToUpperInvariant(),
-            Name = "",
+            Name = string.Empty,
             ConstructionType = "1",
             Address = new AddressInfo()
         };
-        DesignerNotes.Add(new DesignerNoteItem { Title = "", Text = new List<string> { "" } });
-        DesignerAssurance.Add("");
+        DesignerNotes.Add(new DesignerNoteItem { Title = string.Empty, Text = new List<string> { string.Empty } });
+        DesignerAssurance.Add(string.Empty);
     }
 
     public XElement ToXml()
@@ -156,7 +156,7 @@ public sealed class ModificationItem
 {
     public string ModificationNumber { get; set; } = "1";
     public string ModificationDate { get; set; } = DateTime.Today.ToString("yyyy-MM-dd");
-    public string ModificationNote { get; set; } = "";
+    public string ModificationNote { get; set; } = string.Empty;
 
     public XElement ToXml()
     {
@@ -172,43 +172,42 @@ public sealed class AddressInfo
     public string RegionCode { get; set; } = "02";
     public string OktmoCode { get; set; } = "80701000001";
     public string OktmoName { get; set; } = "г. Уфа";
-    public string District { get; set; } = "";
+    public string District { get; set; } = string.Empty;
     public string City { get; set; } = "Уфа";
     public string Street { get; set; } = "Центральная";
     public string Building { get; set; } = "1";
-    public string Room { get; set; } = "";
+    public string Room { get; set; } = string.Empty;
 
     public XElement ToXml(string elementName = "Address")
     {
-        var address = new XElement(elementName,
-            new XElement("RussianAddress",
-                new XElement("RegionCode", RegionCode),
-                new XElement("OKTMOCode", OktmoCode),
-                new XElement("OKTMOName", OktmoName)));
+        var russianAddress = new XElement("RussianAddress",
+            new XElement("RegionCode", RegionCode),
+            new XElement("OKTMOCode", OktmoCode),
+            new XElement("OKTMOName", OktmoName));
 
         if (!string.IsNullOrWhiteSpace(District))
-            address.Element("RussianAddress")?.Add(new XElement("District", District));
+            russianAddress.Add(new XElement("District", District));
 
-        address.Element("RussianAddress")?.Add(
+        russianAddress.Add(
             new XElement("City", City),
             new XElement("Street", Street),
             new XElement("Building", Building));
 
         if (!string.IsNullOrWhiteSpace(Room))
-            address.Element("RussianAddress")?.Add(new XElement("Room", Room));
+            russianAddress.Add(new XElement("Room", Room));
 
-        return address;
+        return new XElement(elementName, russianAddress);
     }
 }
 
 public sealed class OrganizationInfo
 {
-    public string FullName { get; set; } = "";
-    public string AbbreviatedName { get; set; } = "";
-    public string Ogrn { get; set; } = "";
-    public string Inn { get; set; } = "";
-    public string Kpp { get; set; } = "";
-    public string NOPRIZNumber { get; set; } = "";
+    public string FullName { get; set; } = string.Empty;
+    public string AbbreviatedName { get; set; } = string.Empty;
+    public string Ogrn { get; set; } = string.Empty;
+    public string Inn { get; set; } = string.Empty;
+    public string Kpp { get; set; } = string.Empty;
+    public string NOPRIZNumber { get; set; } = string.Empty;
     public AddressInfo Address { get; set; } = new();
 
     public XElement ToXml(string elementName)
@@ -222,12 +221,10 @@ public sealed class OrganizationInfo
         if (!string.IsNullOrWhiteSpace(Kpp))
             organization.Add(new XElement("KPP", Kpp));
 
-        if (!string.IsNullOrWhiteSpace(NOPRIZNumber) && elementName == "Organization")
+        if (!string.IsNullOrWhiteSpace(NOPRIZNumber))
             organization.Add(new XAttribute("NOPRIZNumber", NOPRIZNumber));
 
-        if (Address != null)
-            organization.Add(Address.ToXml());
-
+        organization.Add(Address.ToXml());
         return new XElement(elementName, organization);
     }
 }
@@ -235,11 +232,11 @@ public sealed class OrganizationInfo
 public sealed class SignerInfo
 {
     public string Role { get; set; } = "Разработка";
-    public string Surname { get; set; } = "";
-    public string Name { get; set; } = "";
-    public string Patronymic { get; set; } = "";
-    public string Snils { get; set; } = "";
-    public string NOPRIZNumber { get; set; } = "";
+    public string Surname { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string Patronymic { get; set; } = string.Empty;
+    public string Snils { get; set; } = string.Empty;
+    public string NOPRIZNumber { get; set; } = string.Empty;
 
     public XElement ToXml()
     {
@@ -255,9 +252,9 @@ public sealed class SignerInfo
 
 public sealed class FileInfo
 {
-    public string FileName { get; set; } = "";
+    public string FileName { get; set; } = string.Empty;
     public string FileFormat { get; set; } = "pdf";
-    public string FileChecksum { get; set; } = "";
+    public string FileChecksum { get; set; } = string.Empty;
     public SignFileInfo? SignFile { get; set; }
 
     public XElement ToXml()
@@ -276,10 +273,10 @@ public sealed class FileInfo
 
 public sealed class SignFileInfo
 {
-    public string FileName { get; set; } = "";
+    public string FileName { get; set; } = string.Empty;
     public string FileFormat { get; set; } = "sig";
     public string RelativePath { get; set; } = "ЭЦП";
-    public string FileChecksum { get; set; } = "";
+    public string FileChecksum { get; set; } = string.Empty;
 
     public XElement ToXml()
     {
@@ -293,12 +290,12 @@ public sealed class SignFileInfo
 
 public sealed class ProjectDocument
 {
-    public string DocType { get; set; } = "";
-    public string DocName { get; set; } = "";
-    public string DocNumber { get; set; } = "";
-    public string DocDate { get; set; } = "";
-    public string DocIssueAuthor { get; set; } = "";
-    public string Included { get; set; } = "";
+    public string DocType { get; set; } = string.Empty;
+    public string DocName { get; set; } = string.Empty;
+    public string DocNumber { get; set; } = string.Empty;
+    public string DocDate { get; set; } = string.Empty;
+    public string DocIssueAuthor { get; set; } = string.Empty;
+    public string Included { get; set; } = string.Empty;
     public FileInfo? File { get; set; }
 
     public XElement ToXml()
@@ -322,7 +319,7 @@ public sealed class ProjectDocument
 
 public sealed class AdditionalDataItem
 {
-    public string DataDescription { get; set; } = "";
+    public string DataDescription { get; set; } = string.Empty;
     public FileInfo File { get; set; } = new();
 
     public XElement ToXml()
@@ -336,7 +333,7 @@ public sealed class AdditionalDataItem
 public sealed class FinanceSourcesInfo
 {
     public bool PrivateSource { get; set; } = true;
-    public string FinanceComment { get; set; } = "";
+    public string FinanceComment { get; set; } = string.Empty;
 
     public XElement ToXml()
     {
@@ -352,11 +349,11 @@ public sealed class FinanceSourcesInfo
 public sealed class ObjectInfo
 {
     public string TypeName { get; set; } = "NonIndustrialObject";
-    public string ObjectId { get; set; } = "";
+    public string ObjectId { get; set; } = string.Empty;
     public string Placement { get; set; } = "1";
     public string DangerousAndComplex { get; set; } = "0";
     public string Unique { get; set; } = "0";
-    public string Name { get; set; } = "";
+    public string Name { get; set; } = string.Empty;
     public string ConstructionType { get; set; } = "1";
     public AddressInfo Address { get; set; } = new();
 
@@ -375,7 +372,7 @@ public sealed class ObjectInfo
 
 public sealed class DesignerNoteItem
 {
-    public string Title { get; set; } = "";
+    public string Title { get; set; } = string.Empty;
     public List<string> Text { get; set; } = new();
 
     public XElement ToXml()
@@ -392,9 +389,9 @@ public sealed class DesignerNoteItem
 
 public sealed class TeiItem
 {
-    public string Name { get; set; } = "";
-    public string Measure { get; set; } = "";
-    public string Value { get; set; } = "";
+    public string Name { get; set; } = string.Empty;
+    public string Measure { get; set; } = string.Empty;
+    public string Value { get; set; } = string.Empty;
 
     public XElement ToXml()
     {
