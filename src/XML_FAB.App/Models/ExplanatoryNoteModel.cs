@@ -11,7 +11,6 @@ public sealed class ExplanatoryNoteModel
     public string Id { get; set; } = Guid.NewGuid().ToString().ToUpperInvariant();
 
     public List<ModificationItem> ExplanatoryNoteModifications { get; set; } = new();
-
     public OrganizationInfo IssueAuthor { get; set; } = new();
     public List<SignerInfo> Signers { get; set; } = new();
     public OrganizationInfo Developer { get; set; } = new();
@@ -20,10 +19,51 @@ public sealed class ExplanatoryNoteModel
     public List<ProjectDocument> ProjectInitialDocuments { get; set; } = new();
     public List<AdditionalDataItem> AdditionalData { get; set; } = new();
     public FinanceSourcesInfo FinanceSources { get; set; } = new();
-
     public ObjectInfo NonIndustrialObject { get; set; } = new();
     public List<DesignerNoteItem> DesignerNotes { get; set; } = new();
     public List<string> DesignerAssurance { get; set; } = new();
+
+    public ExplanatoryNoteModel()
+    {
+        ExplanatoryNoteModifications.Add(new ModificationItem());
+        IssueAuthor = new OrganizationInfo
+        {
+            FullName = "",
+            AbbreviatedName = "",
+            Ogrn = "",
+            Inn = "",
+            Kpp = "",
+            NOPRIZNumber = "",
+            Address = new AddressInfo()
+        };
+
+        Developer = new OrganizationInfo
+        {
+            FullName = "",
+            AbbreviatedName = "",
+            Ogrn = "",
+            Inn = "",
+            Kpp = "",
+            NOPRIZNumber = "",
+            Address = new AddressInfo()
+        };
+
+        Signers.Add(new SignerInfo());
+        UsedNorms.Add("Нормативные документы не указаны");
+        ProjectDecisionDocuments.Add(new ProjectDocument());
+        ProjectInitialDocuments.Add(new ProjectDocument());
+        AdditionalData.Add(new AdditionalDataItem { DataDescription = "", File = new FileInfo { FileName = "", FileFormat = "pdf", FileChecksum = "" } });
+        NonIndustrialObject = new ObjectInfo
+        {
+            TypeName = "NonIndustrialObject",
+            ObjectId = Guid.NewGuid().ToString().ToUpperInvariant(),
+            Name = "",
+            ConstructionType = "1",
+            Address = new AddressInfo()
+        };
+        DesignerNotes.Add(new DesignerNoteItem { Title = "", Text = new List<string> { "" } });
+        DesignerAssurance.Add("");
+    }
 
     public XElement ToXml()
     {
@@ -173,7 +213,7 @@ public sealed class OrganizationInfo
 
     public XElement ToXml(string elementName)
     {
-        var organization = new XElement(elementName,
+        var organization = new XElement("Organization",
             new XElement("FullName", FullName),
             new XElement("AbbreviatedName", AbbreviatedName),
             new XElement("OGRN", Ogrn),
@@ -188,8 +228,7 @@ public sealed class OrganizationInfo
         if (Address != null)
             organization.Add(Address.ToXml());
 
-        return new XElement(elementName,
-            organization.Elements());
+        return new XElement(elementName, organization);
     }
 }
 
@@ -204,15 +243,13 @@ public sealed class SignerInfo
 
     public XElement ToXml()
     {
-        var signer = new XElement("ChiefProjectEngineer",
+        return new XElement("ChiefProjectEngineer",
             new XAttribute("role", Role),
             new XElement("Surname", Surname),
             new XElement("Name", Name),
             new XElement("Patronymic", Patronymic),
             new XElement("SNILS", Snils),
             new XElement("NOPRIZNumber", NOPRIZNumber));
-
-        return signer;
     }
 }
 
