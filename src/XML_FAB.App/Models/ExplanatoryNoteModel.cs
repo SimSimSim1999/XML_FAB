@@ -50,76 +50,160 @@ public sealed class ExplanatoryNoteModel
 
         Signers.Add(new SignerInfo());
         UsedNorms.Add(string.Empty);
+
         ProjectDecisionDocuments.Add(new ProjectDocument());
         ProjectInitialDocuments.Add(new ProjectDocument());
-        AdditionalData.Add(new AdditionalDataItem { DataDescription = string.Empty, File = new FileInfo() });
+
+        AdditionalData.Add(new AdditionalDataItem
+        {
+            DataDescription = string.Empty,
+            File = new FileInfo()
+        });
+
         NonIndustrialObject = new ObjectInfo
         {
             TypeName = "NonIndustrialObject",
             ObjectId = Guid.NewGuid().ToString().ToUpperInvariant(),
             Name = string.Empty,
             ConstructionType = "1",
-            Address = new AddressInfo()
+            Address = new AddressInfo(),
+            Functions = new FunctionInfo()
         };
+
         DesignerNotes.Add(new DesignerNoteItem { Title = string.Empty, Text = new List<string> { string.Empty } });
         DesignerAssurance.Add(string.Empty);
-
-                if (ProjectDecisionDocuments.Count > 0)
-        {
-            var documents = new XElement("ProjectDecisionDocuments");
-            foreach (var document in ProjectDecisionDocuments)
-            {
-                var xml = document.ToXml();
-                if (xml != null)
-                    documents.Add(xml);
-            }
-        
-            if (documents.HasElements)
-                root.Add(documents);
-        }
     }
 
-   public XElement? ToXml()
-{
-    var hasAnyValue =
-        !string.IsNullOrWhiteSpace(DocType) ||
-        !string.IsNullOrWhiteSpace(DocName) ||
-        !string.IsNullOrWhiteSpace(DocNumber) ||
-        !string.IsNullOrWhiteSpace(DocDate) ||
-        !string.IsNullOrWhiteSpace(DocIssueAuthor) ||
-        !string.IsNullOrWhiteSpace(Included) ||
-        File != null;
+    public XElement ToXml()
+    {
+        XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
 
-    if (!hasAnyValue)
-        return null;
+        var root = new XElement(
+            "ExplanatoryNote",
+            new XAttribute("SchemaVersion", SchemaVersion),
+            new XAttribute("id", Id),
+            new XAttribute(XNamespace.Xmlns + "xsi", xsi.NamespaceName),
+            new XAttribute(xsi + "noNamespaceSchemaLocation", "explanatorynote-01-07.xsd"));
 
-    var document = new XElement("Document");
+        if (!string.IsNullOrWhiteSpace(AccessRestriction))
+            root.Add(new XAttribute("AccessRestriction", AccessRestriction));
 
-    if (!string.IsNullOrWhiteSpace(DocType))
-        document.Add(new XElement("DocType", DocType));
+        root.Add(new XElement("ExplanatoryNoteNumber", ExplanatoryNoteNumber));
+        root.Add(new XElement("ExplanatoryNoteYear", ExplanatoryNoteYear));
 
-    if (!string.IsNullOrWhiteSpace(DocName))
-        document.Add(new XElement("DocName", DocName));
+        if (ExplanatoryNoteModifications.Count > 0)
+        {
+            var modifications = new XElement("ExplanatoryNoteModifications");
+            foreach (var item in ExplanatoryNoteModifications)
+            {
+                if (item.IsEmpty())
+                    continue;
 
-    if (!string.IsNullOrWhiteSpace(DocNumber))
-        document.Add(new XElement("DocNumber", DocNumber));
+                modifications.Add(item.ToXml());
+            }
 
-    if (!string.IsNullOrWhiteSpace(DocDate))
-        document.Add(new XElement("DocDate", DocDate));
+            if (modifications.HasElements)
+                root.Add(modifications);
+        }
 
-    if (!string.IsNullOrWhiteSpace(DocIssueAuthor))
-        document.Add(new XElement("DocIssueAuthor", DocIssueAuthor));
+        root.Add(IssueAuthor.ToXml("IssueAuthor"));
 
-    // По XSD здесь ожидаются DocChanges, File, Included, Link.
-    // Если File существует — ставим его раньше Included.
-    if (File != null)
-        document.Add(File.ToXml());
+        if (Signers.Count > 0)
+        {
+            var signers = new XElement("Signers");
+            foreach (var signer in Signers)
+            {
+                if (signer.IsEmpty())
+                    continue;
 
-    if (!string.IsNullOrWhiteSpace(Included))
-        document.Add(new XElement("Included", Included));
+                signers.Add(signer.ToXml());
+            }
 
-    return document;
-}
+            if (signers.HasElements)
+                root.Add(signers);
+        }
+
+        root.Add(Developer.ToXml("Developer"));
+
+        if (UsedNorms.Count > 0)
+        {
+            var usedNorms = new XElement("UsedNorms");
+            foreach (var text in UsedNorms)
+            {
+                if (string.IsNullOrWhiteSpace(text))
+                    continue;
+
+                usedNorms.Add(new XElement("UsedNorm", text));
+            }
+
+            if (usedNorms.HasElements)
+                root.Add(usedNorms);
+        }
+
+        var decisionDocs = new XElement("ProjectDecisionDocuments");
+        foreach (var doc in ProjectDecisionDocuments)
+        {
+            var xml = doc.ToXml();
+            if (xml != null)
+                decisionDocs.Add(xml);
+        }
+
+        if (decisionDocs.HasElements)
+            root.Add(decisionDocs);
+
+        var initialDocs = new XElement("ProjectInitialDocuments");
+        foreach (var doc in ProjectInitialDocuments)
+        {
+            var xml = doc.ToXml();
+            if (xml != null)
+                initialDocs.Add(xml);
+        }
+
+        if (initialDocs.HasElements)
+            root.Add(initialDocs);
+
+        var additional = new XElement("AdditionalData");
+        foreach (var item in AdditionalData)
+        {
+            var xml = item.ToXml();
+            if (xml != null)
+                additional.Add(xml);
+        }
+
+        if (additional.HasElements)
+            root.Add(additional);
+
+        root.Add(FinanceSources.ToXml());
+
+        root.Add(NonIndustrialObject.ToXml());
+
+        foreach (var note in DesignerNotes)
+        {
+            if (note == null)
+                continue;
+
+            var xml = note.ToXml();
+            if (xml != null)
+                root.Add(xml);
+        }
+
+        if (DesignerAssurance.Count > 0)
+        {
+            var assurance = new XElement("DesignerAssurance");
+            foreach (var text in DesignerAssurance)
+            {
+                if (string.IsNullOrWhiteSpace(text))
+                    continue;
+
+                assurance.Add(new XElement("Text", text));
+            }
+
+            if (assurance.HasElements)
+                root.Add(assurance);
+        }
+
+        return root;
+    }
 }
 
 public sealed class ModificationItem
@@ -127,6 +211,11 @@ public sealed class ModificationItem
     public string ModificationNumber { get; set; } = "1";
     public string ModificationDate { get; set; } = DateTime.Today.ToString("yyyy-MM-dd");
     public string ModificationNote { get; set; } = string.Empty;
+
+    public bool IsEmpty()
+        => string.IsNullOrWhiteSpace(ModificationNumber)
+        && string.IsNullOrWhiteSpace(ModificationDate)
+        && string.IsNullOrWhiteSpace(ModificationNote);
 
     public XElement ToXml()
     {
@@ -208,6 +297,14 @@ public sealed class SignerInfo
     public string Snils { get; set; } = string.Empty;
     public string NOPRIZNumber { get; set; } = string.Empty;
 
+    public bool IsEmpty() =>
+        string.IsNullOrWhiteSpace(Role)
+        && string.IsNullOrWhiteSpace(Surname)
+        && string.IsNullOrWhiteSpace(Name)
+        && string.IsNullOrWhiteSpace(Patronymic)
+        && string.IsNullOrWhiteSpace(Snils)
+        && string.IsNullOrWhiteSpace(NOPRIZNumber);
+
     public XElement ToXml()
     {
         return new XElement("ChiefProjectEngineer",
@@ -223,16 +320,28 @@ public sealed class SignerInfo
 public sealed class FileInfo
 {
     public string FileName { get; set; } = string.Empty;
-    public string FileFormat { get; set; } = "pdf";
+    public string FileFormat { get; set; } = string.Empty;
     public string FileChecksum { get; set; } = string.Empty;
     public SignFileInfo? SignFile { get; set; }
 
-    public XElement ToXml()
+    public XElement? ToXml()
     {
-        var file = new XElement("File",
-            new XElement("FileName", FileName),
-            new XElement("FileFormat", FileFormat),
-            new XElement("FileChecksum", FileChecksum));
+        if (string.IsNullOrWhiteSpace(FileName)
+            && string.IsNullOrWhiteSpace(FileFormat)
+            && string.IsNullOrWhiteSpace(FileChecksum)
+            && SignFile == null)
+            return null;
+
+        var file = new XElement("File");
+
+        if (!string.IsNullOrWhiteSpace(FileName))
+            file.Add(new XElement("FileName", FileName));
+
+        if (!string.IsNullOrWhiteSpace(FileFormat))
+            file.Add(new XElement("FileFormat", FileFormat));
+
+        if (!string.IsNullOrWhiteSpace(FileChecksum))
+            file.Add(new XElement("FileChecksum", FileChecksum));
 
         if (SignFile != null)
             file.Add(SignFile.ToXml());
@@ -244,7 +353,7 @@ public sealed class FileInfo
 public sealed class SignFileInfo
 {
     public string FileName { get; set; } = string.Empty;
-    public string FileFormat { get; set; } = "sig";
+    public string FileFormat { get; set; } = string.Empty;
     public string RelativePath { get; set; } = "ЭЦП";
     public string FileChecksum { get; set; } = string.Empty;
 
@@ -268,20 +377,43 @@ public sealed class ProjectDocument
     public string Included { get; set; } = string.Empty;
     public FileInfo? File { get; set; }
 
-    public XElement ToXml()
+    public XElement? ToXml()
     {
-        var document = new XElement("Document",
-            new XElement("DocType", DocType),
-            new XElement("DocName", DocName),
-            new XElement("DocNumber", DocNumber),
-            new XElement("DocDate", DocDate),
-            new XElement("DocIssueAuthor", DocIssueAuthor));
+        var hasAnyValue =
+            !string.IsNullOrWhiteSpace(DocType)
+            || !string.IsNullOrWhiteSpace(DocName)
+            || !string.IsNullOrWhiteSpace(DocNumber)
+            || !string.IsNullOrWhiteSpace(DocDate)
+            || !string.IsNullOrWhiteSpace(DocIssueAuthor)
+            || !string.IsNullOrWhiteSpace(Included)
+            || (File != null && !string.IsNullOrWhiteSpace(File.FileName));
+
+        if (!hasAnyValue)
+            return null;
+
+        var document = new XElement("Document");
+
+        if (!string.IsNullOrWhiteSpace(DocType))
+            document.Add(new XElement("DocType", DocType));
+
+        if (!string.IsNullOrWhiteSpace(DocName))
+            document.Add(new XElement("DocName", DocName));
+
+        if (!string.IsNullOrWhiteSpace(DocNumber))
+            document.Add(new XElement("DocNumber", DocNumber));
+
+        if (!string.IsNullOrWhiteSpace(DocDate))
+            document.Add(new XElement("DocDate", DocDate));
+
+        if (!string.IsNullOrWhiteSpace(DocIssueAuthor))
+            document.Add(new XElement("DocIssueAuthor", DocIssueAuthor));
+
+        // Порядок по XSD: DocType, DocName, DocNumber, DocDate, DocIssueAuthor, File, Included, Link...
+        if (File != null && !string.IsNullOrWhiteSpace(File.FileName))
+            document.Add(File.ToXml());
 
         if (!string.IsNullOrWhiteSpace(Included))
             document.Add(new XElement("Included", Included));
-
-        if (File != null)
-            document.Add(File.ToXml());
 
         return document;
     }
@@ -292,11 +424,24 @@ public sealed class AdditionalDataItem
     public string DataDescription { get; set; } = string.Empty;
     public FileInfo File { get; set; } = new();
 
-    public XElement ToXml()
+    public XElement? ToXml()
     {
-        return new XElement("Data",
-            new XElement("DataDescription", DataDescription),
-            File.ToXml());
+        var hasAnyValue =
+            !string.IsNullOrWhiteSpace(DataDescription)
+            || (File != null && !string.IsNullOrWhiteSpace(File.FileName));
+
+        if (!hasAnyValue)
+            return null;
+
+        var data = new XElement("Data");
+
+        if (!string.IsNullOrWhiteSpace(DataDescription))
+            data.Add(new XElement("DataDescription", DataDescription));
+
+        if (File != null && !string.IsNullOrWhiteSpace(File.FileName))
+            data.Add(File.ToXml());
+
+        return data;
     }
 }
 
@@ -316,6 +461,16 @@ public sealed class FinanceSourcesInfo
     }
 }
 
+public sealed class FunctionInfo
+{
+    public string FunctionsNote { get; set; } = string.Empty;
+    public string FunctionsClass { get; set; } = string.Empty;
+
+    public bool IsEmpty() =>
+        string.IsNullOrWhiteSpace(FunctionsNote)
+        && string.IsNullOrWhiteSpace(FunctionsClass);
+}
+
 public sealed class ObjectInfo
 {
     public string TypeName { get; set; } = "NonIndustrialObject";
@@ -326,10 +481,11 @@ public sealed class ObjectInfo
     public string Name { get; set; } = string.Empty;
     public string ConstructionType { get; set; } = "1";
     public AddressInfo Address { get; set; } = new();
+    public FunctionInfo Functions { get; set; } = new();
 
     public XElement ToXml()
     {
-        return new XElement(TypeName,
+        var obj = new XElement(TypeName,
             new XAttribute("ObjectID", ObjectId),
             new XAttribute("Placement", Placement),
             new XAttribute("DangerousAndComplex", DangerousAndComplex),
@@ -337,6 +493,22 @@ public sealed class ObjectInfo
             new XElement("Name", Name),
             new XElement("ConstructionType", ConstructionType),
             Address.ToXml());
+
+        if (Functions != null && !Functions.IsEmpty())
+        {
+            var f = new XElement("Functions");
+
+            if (!string.IsNullOrWhiteSpace(Functions.FunctionsNote))
+                f.Add(new XElement("FunctionsNote", Functions.FunctionsNote));
+
+            if (!string.IsNullOrWhiteSpace(Functions.FunctionsClass))
+                f.Add(new XElement("FunctionsClass", Functions.FunctionsClass));
+
+            if (f.HasElements)
+                obj.Add(f);
+        }
+
+        return obj;
     }
 }
 
@@ -345,15 +517,26 @@ public sealed class DesignerNoteItem
     public string Title { get; set; } = string.Empty;
     public List<string> Text { get; set; } = new();
 
-    public XElement ToXml()
+    public XElement? ToXml()
     {
+        if (string.IsNullOrWhiteSpace(Title) && (Text == null || Text.Count == 0 || Text.All(x => string.IsNullOrWhiteSpace(x))))
+            return null;
+
         var note = new XElement("DesignerNote",
             new XAttribute("Title", Title));
 
         foreach (var item in Text)
-            note.Add(new XElement("Text", item));
+        {
+            if (string.IsNullOrWhiteSpace(item))
+                continue;
 
-        return note;
+            note.Add(new XElement("Text", item));
+        }
+
+        if (note.HasElements)
+            return note;
+
+        return null;
     }
 }
 
